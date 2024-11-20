@@ -58,10 +58,11 @@
 }
 .Previsões{
     height: 100%;
-    width: auto;
+    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 50px;

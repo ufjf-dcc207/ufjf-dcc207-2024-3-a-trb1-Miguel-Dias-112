@@ -5,11 +5,42 @@ type Rotas= {
     pontos: string[]
   }
 type Horario = {
-    hora: string,
+    nome: string,
     rotas: Rotas[],
     intervaloPontos: number,
-
 }
+type HorarioProps = {
+    horaChegada: string,
+    horaPrevisão: string,
+    nome: string,
+}
+function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
+    return(
+        <div className='container'>
+        <h2>{nome}</h2>
+        <div className='data'>
+            <section>
+                <h3>Hora chegada:</h3>
+                <p>{horaChegada}</p>
+            </section>
+            <section>
+                <h3>Previsão:</h3>
+                <p>15 minutos</p>
+            </section>
+
+        </div>
+        
+    </div>
+    )
+}
+const Horarios: Horario[] = [
+    { nome: "almoco", rotas: [
+        { nome: "teste", id: 1, pontos: ["ponto1", "ponto2"] },
+        { nome: "teste", id: 2, pontos: ["ponto1", "ponto2", "ponto3"] },
+        { nome: "teste", id: 3, pontos: ["ponto1"] },
+        { nome: "teste", id: 4, pontos: ["ponto1", "ponto2"] }
+    ], intervaloPontos: 15 },
+]
 function Previsão() {
   return (
       
@@ -29,20 +60,16 @@ function Previsão() {
               <button>encontre pra mim</button>
           </section>     
           <div className='Previsões'>
-            <div className='container'>
-                <h2>Odonto Ich</h2>
-                <div className='data'>
-                    <section>
-                        <h3>Hora chegada:</h3>
-                        <p>15 minutos</p>
-                    </section>
-                    <section>
-                        <h3>Previsão:</h3>
-                        <p>15 minutos</p>
-                    </section>
-                </div>
-                
-            </div>
+            {
+            Horarios[0].rotas.map( 
+                (rota:Rotas, index) => {
+                    return (
+                      <Horario horaChegada="12:00" horaPrevisão="12:15" nome={rota.nome}></Horario>
+                );
+                }
+            )
+              
+            }
           </div>
          
         </main>
