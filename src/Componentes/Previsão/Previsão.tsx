@@ -20,7 +20,7 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
         <h2>{nome}</h2>
         <div className='data'>
             <section>
-                <h3>Hora chegada:</h3>
+                <h3>chegada:</h3>
                 <p>{horaChegada}</p>
             </section>
             <section>
