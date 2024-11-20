@@ -4,7 +4,9 @@ import Footer from './Componentes/Footer/footer'
 import Previsão from './Componentes/Previsão/Previsão'
 import {
   createBrowserRouter,
+  Route,
   RouterProvider,
+  Routes,
 } from "react-router-dom";
 import Rotas from './Componentes/Rotas/Rotas';
 const router = createBrowserRouter([
@@ -22,7 +24,10 @@ function App() {
   return (
     
     <div className='app'>
-        <RouterProvider router={router} />
+        <Routes>
+          <Route  path="/cadeCircular" element={<Previsão/>}/>
+          <Route  path="/cadeCircular/rotas" element={<Rotas/>}/>
+        </Routes>
         <Footer></Footer>
     </div>
       
