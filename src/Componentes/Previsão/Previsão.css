@@ -61,8 +61,76 @@
     width: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 10px;
-    background-color: red;
+    margin-top: 50px;
+}
+.Previsões .container{
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+    border-radius: 5px;
+    border: 5px solid rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.Previsões .container h2{
+    margin: 0%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    width: 100%;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 5px solid black;
+}
+.Previsões .container section{
+    padding: 0;
+    margin: 0%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 0px;
+
+}
+.Previsões .container section h3{
+    font-size: 20px;
+    width: 50%;
+    padding: 10px;
+    font-weight: bold;
+    margin: 0%;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    background-color: aliceblue;
+
+    align-items: center;
+}
+.Previsões .container section p{
+    margin: 0%;
+    padding: 0;
+    border-bottom:3px solid black ;
+    border-radius: 2px;
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .data{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:10px;
+    height: 100%;
 }

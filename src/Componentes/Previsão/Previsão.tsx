@@ -29,7 +29,20 @@ function Previsão() {
               <button>encontre pra mim</button>
           </section>     
           <div className='Previsões'>
-            
+            <div className='container'>
+                <h2>Odonto Ich</h2>
+                <div className='data'>
+                    <section>
+                        <h3>Hora chegada:</h3>
+                        <p>15 minutos</p>
+                    </section>
+                    <section>
+                        <h3>Previsão:</h3>
+                        <p>15 minutos</p>
+                    </section>
+                </div>
+                
+            </div>
           </div>
          
         </main>
