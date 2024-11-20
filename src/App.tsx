@@ -1,11 +1,11 @@
 
-import Rotas from './Componentes/Rotas/Rotas'
 import './App.css'
+import Previsão from './Componentes/Previsão/Previsão'
 function App() {
 
   return (
     <div className='app'>
-      <Rotas></Rotas>
+      <Previsão></Previsão>
     </div>
   )
 }
