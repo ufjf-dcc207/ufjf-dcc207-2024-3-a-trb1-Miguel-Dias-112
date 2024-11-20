@@ -25,7 +25,7 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
             </section>
             <section>
                 <h3>Previsão:</h3>
-                <p>15 minutos</p>
+                <p>{horaPrevisão}</p>
             </section>
 
         </div>
@@ -62,7 +62,7 @@ function Previsão() {
           <div className='Previsões'>
             {
             Horarios[0].rotas.map( 
-                (rota:Rotas, index) => {
+                (rota:Rotas) => {
                     return (
                       <Horario horaChegada="12:00" horaPrevisão="12:15" nome={rota.nome}></Horario>
                 );
