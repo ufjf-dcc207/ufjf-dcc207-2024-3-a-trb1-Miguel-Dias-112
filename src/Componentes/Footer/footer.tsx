@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import './footer.css'
+
 function Footer() {
     const navigate = useNavigate();
 
@@ -8,8 +9,9 @@ function Footer() {
     }
     return (
         <footer >
-        <button onClick={()=>{handleClick('/cadeCircular/rotas')}}>Rotas</button>
-        <button onClick={()=>{handleClick('/cadeCircular/')}}>Previsão</button>
+            <button onClick={()=>{handleClick('/cadeCircular/rotas')}}>Rotas</button>
+            <button onClick={()=>{handleClick('/cadeCircular/')}}>Previsão</button>
+
         </footer>
     )
 }

@@ -27,6 +27,7 @@ function App() {
         <Routes>
           <Route  path="/cadeCircular" element={<Previsão/>}/>
           <Route  path="/cadeCircular/rotas" element={<Rotas/>}/>
+
         </Routes>
         <Footer></Footer>
     </div>
