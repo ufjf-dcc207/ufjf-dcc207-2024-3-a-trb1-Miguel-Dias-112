@@ -64,6 +64,20 @@ const Horarios: Horario[] = [
         ],
         
         intervaloPontos: 5
+      },
+      {
+        nome: "jantar",
+        inicio: "00:00:00",
+        fim: "12:15:00",
+        rotas: [
+            OdontoIchDireto,
+            OdontoIchRU,
+            AnelViario,
+            HURUDireto,
+            Circular
+        ],
+        
+        intervaloPontos: 5
       }
 ]
 const HorariosFora: Horario= {
@@ -106,11 +120,10 @@ class CircularAPI {
 
         const diaAtual = new Date()
         const diffInMs   = time.getTime() - diaAtual.getTime()
-        const diffInHours = Math.floor(diffInMs / 1000 / 60 / 60)
-        
+        const diffInMinutes = Math.floor(diffInMs / 1000 / 60)
         return {
             tempo: `${hours}:${minutes}`,
-            restante: `${diffInHours}h ${time.getMinutes()}m`
+            restante: `${diffInMinutes}m`
         }
     }
     get horariosDate(): Horario{

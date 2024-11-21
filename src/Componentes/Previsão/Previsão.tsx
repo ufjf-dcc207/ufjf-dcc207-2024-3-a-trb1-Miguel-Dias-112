@@ -36,6 +36,7 @@ function Previsão() {
     const ponto = e.options[e.selectedIndex].value
     setPonto(ponto)
   }
+  const pontos = circularAPI.getRotasbyName('Circular').pontos
   return (
       
       <div className='Previsão'>
@@ -46,10 +47,9 @@ function Previsão() {
         <section className='sectionSelect'>
             <label htmlFor="cars">Ponto Atual:</label>
               <select id="cars" name="cars">
-                <option value="volvo">anel</option>
-                <option value="saab">anel</option>
-                <option value="fiat">anel</option>
-                <option value="audi">anel</option>
+                {pontos.map( (ponto) => {
+                  return <option value={ponto}>{ponto}</option>
+                })}
               </select>
           </section>     
           <div className='Previsões'>
