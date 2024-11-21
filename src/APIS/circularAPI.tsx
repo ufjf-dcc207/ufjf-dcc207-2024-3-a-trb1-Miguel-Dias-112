@@ -72,10 +72,10 @@ class CircularAPI {
             return rota.nome
         })
     }
-    getRotasbyName(nome: string): Rotas[]{
+    getRotasbyName(nome: string): Rotas{
         return Rotas.filter( (rota) => {
             return rota.nome === nome
-        })
+        })[0]
     }
     getHorarioByDate(){
         const date = new Date()

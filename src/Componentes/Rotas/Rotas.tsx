@@ -3,14 +3,18 @@ import type {Rotas} from '../../APIS/circularAPI.tsx'
 import CircularAPI from '../../APIS/circularAPI.tsx'
 import { useState,useRef } from 'react'
 function Rotas() {
-  const [rota, setRota] = useState<Rotas[]>([])
-  const selectIPT = useRef<HTMLSelectElement>(null)
-  const rotasNome = CircularAPI.getRotasNome()
 
+  const rotasNome = CircularAPI.getRotasNome()
+  const rotaDefault = CircularAPI.getRotasbyName(rotasNome[0])
+  const [rota, setRota] = useState<Rotas | undefined>(rotaDefault)
+  const selectIPT = useRef<HTMLSelectElement>(null)
+  
   function onSelectHandler(){
     const e = selectIPT.current!
     const nome = e.options[e.selectedIndex].value;
-    setRota(CircularAPI.getRotasbyName(nome) || [])
+    setRota(CircularAPI.getRotasbyName(nome))
+    console.log(rota)
+
   }
   return (
       
@@ -30,7 +34,7 @@ function Rotas() {
           </section>     
           <div className='Pontos'>
           {
-          pontos.map( 
+          rota?.pontos.map( 
             (ponto:String) => {
             return (
               <div className='Ponto'>
