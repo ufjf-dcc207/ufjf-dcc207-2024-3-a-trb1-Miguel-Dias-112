@@ -1,14 +1,11 @@
 import './Previsão.css'
 import circularAPI, { Rotas } from '../../APIS/circularAPI'
+import {useRef, useState} from 'react'
+
 interface HorarioProps {
     horaChegada: string;
     horaPrevisão: string;
     nome: string;
-}
-interface Horario {
-    nome: string;
-    rotas: Rotas[];
-    intervaloPontos: number;
 }
 function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
     return(
@@ -32,6 +29,13 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
 
 function Previsão() {
   const horarios = circularAPI.horariosDate
+  const [ponto, setPonto] = useState<string>('Letras ')
+  const select = useRef<HTMLSelectElement>(null)
+  function onchangeHandler(){
+    const e = select.current!
+    const ponto = e.options[e.selectedIndex].value
+    setPonto(ponto)
+  }
   return (
       
       <div className='Previsão'>

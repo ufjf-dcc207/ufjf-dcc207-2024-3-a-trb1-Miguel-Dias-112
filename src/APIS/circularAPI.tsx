@@ -126,6 +126,8 @@ class CircularAPI {
             return _horario[0]
         }
     }
-   
+   get Pontos(): string[]{
+        return this.getRotasbyName('Circular').pontos
+    }
 }
 export default new CircularAPI()
