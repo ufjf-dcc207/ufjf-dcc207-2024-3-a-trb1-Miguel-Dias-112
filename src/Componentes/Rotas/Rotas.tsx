@@ -4,11 +4,10 @@ import CircularAPI from '../../APIS/circularAPI.tsx'
 import { useState,useRef } from 'react'
 function Rotas() {
 
-  const rotasNome = CircularAPI.getRotasNome()
-  const rotaDefault = CircularAPI.getRotasbyName(rotasNome[0])
-  const [rota, setRota] = useState<Rotas | undefined>(rotaDefault)
+  const [rota, setRota] = useState<Rotas | undefined>(CircularAPI.RotaDefault)
   const selectIPT = useRef<HTMLSelectElement>(null)
-  
+  const rotasNome = CircularAPI.getRotasNome()
+
   function onSelectHandler(){
     const e = selectIPT.current!
     const nome = e.options[e.selectedIndex].value;
@@ -26,7 +25,7 @@ function Rotas() {
         <main>
         <section>
             <label htmlFor="cars">Escolha uma rota:</label>
-              <select ref={selectIPT} onSelect={onSelectHandler} name="cars">
+              <select ref={selectIPT} onChange={onSelectHandler} name="cars">
                 {rotasNome.map( (nome) => {
                   return <option value={nome}>{nome}</option>
                 })}

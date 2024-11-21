@@ -67,6 +67,9 @@ class CircularAPI {
     getRotas(): Rotas[]{
         return Rotas
     }
+    get RotaDefault(): Rotas{
+        return Rotas[0]
+    }
     getRotasNome(): string[]{
         return Rotas.map( (rota) => {
             return rota.nome
