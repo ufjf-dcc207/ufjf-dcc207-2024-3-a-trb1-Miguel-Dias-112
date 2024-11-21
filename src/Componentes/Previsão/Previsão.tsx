@@ -60,6 +60,13 @@ function Previsão() {
                     const horas = circularAPI.calculateTime(ponto, rota)
                     const horaChegada = horas.tempo
                     const restante = horas.restante
+                    const restanteInt = parseInt(restante.replace('m', ''))
+                    console.log(restanteInt)
+                    if(restanteInt<=0){
+                        return(
+                          <></>
+                        )
+                    }
                     return (
                       <Horario horaChegada={horaChegada} horaPrevisão={restante} nome={rota.nome}></Horario>
                 );
