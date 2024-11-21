@@ -32,11 +32,10 @@ function Rotas() {
           <div className='Pontos'>
           {
           pontos.map( 
-            (ponto:String, index) => {
+            (ponto:String) => {
             return (
               <div className='Ponto'>
-                              <h3>{ponto}</h3>
-
+                <h3>{ponto}</h3>
                 <img src='https://www2.ufjf.br/eletrica_potencia/wp-content/uploads/sites/523/2014/08/ICE.jpg'>
                 </img>
               </div>
