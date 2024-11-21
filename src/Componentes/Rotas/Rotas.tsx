@@ -1,17 +1,20 @@
 import './Rotas.css'
-type Rotas= {
-  nome: string
-  id: number
-  pontos: string[]
-}
-const rotas: Rotas[] = [
-  { nome: "teste", id: 1, pontos: ["ponto1", "ponto2"] },
-  { nome: "teste", id: 2, pontos: ["ponto1", "ponto2", "ponto3"] },
-  { nome: "teste", id: 3, pontos: ["ponto1"] },
-  { nome: "teste", id: 4, pontos: ["ponto1", "ponto2"] }
-]
+import type {Rotas} from '../../APIS/circularAPI.tsx'
+import CircularAPI from '../../APIS/circularAPI.tsx'
+import { useState,useRef } from 'react'
 function Rotas() {
-  const pontos:string[] = rotas[0].pontos
+
+  const [rota, setRota] = useState<Rotas | undefined>(CircularAPI.RotaDefault)
+  const selectIPT = useRef<HTMLSelectElement>(null)
+  const rotasNome = CircularAPI.getRotasNome()
+
+  function onSelectHandler(){
+    const e = selectIPT.current!
+    const nome = e.options[e.selectedIndex].value;
+    setRota(CircularAPI.getRotasbyName(nome))
+    console.log(rota)
+
+  }
   return (
       
       <div className='Rotas'>
@@ -22,16 +25,15 @@ function Rotas() {
         <main>
         <section>
             <label htmlFor="cars">Escolha uma rota:</label>
-              <select id="cars" name="cars">
-                <option value="volvo">anel</option>
-                <option value="saab">anel</option>
-                <option value="fiat">anel</option>
-                <option value="audi">anel</option>
+              <select ref={selectIPT} onChange={onSelectHandler} name="cars">
+                {rotasNome.map( (nome) => {
+                  return <option value={nome}>{nome}</option>
+                })}
               </select>
           </section>     
           <div className='Pontos'>
           {
-          pontos.map( 
+          rota?.pontos.map( 
             (ponto:String) => {
             return (
               <div className='Ponto'>
@@ -50,3 +52,6 @@ function Rotas() {
 }
 
 export default Rotas
+
+
+
