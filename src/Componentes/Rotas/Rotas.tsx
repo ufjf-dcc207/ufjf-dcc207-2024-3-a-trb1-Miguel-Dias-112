@@ -35,7 +35,10 @@ function Rotas() {
             (ponto:String, index) => {
             return (
               <div className='Ponto'>
-                {ponto} {index + 1}
+                              <h3>{ponto}</h3>
+
+                <img src='https://www2.ufjf.br/eletrica_potencia/wp-content/uploads/sites/523/2014/08/ICE.jpg'>
+                </img>
               </div>
             )
           })}
