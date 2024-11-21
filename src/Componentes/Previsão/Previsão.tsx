@@ -1,18 +1,14 @@
 import './Previsão.css'
-type Rotas= {
-    nome: string
-    id: number
-    pontos: string[]
-  }
-type Horario = {
-    nome: string,
-    rotas: Rotas[],
-    intervaloPontos: number,
+import circularAPI, { Rotas } from '../../APIS/circularAPI'
+interface HorarioProps {
+    horaChegada: string;
+    horaPrevisão: string;
+    nome: string;
 }
-type HorarioProps = {
-    horaChegada: string,
-    horaPrevisão: string,
-    nome: string,
+interface Horario {
+    nome: string;
+    rotas: Rotas[];
+    intervaloPontos: number;
 }
 function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
     return(
@@ -32,15 +28,10 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
     </div>
     )
 }
-const Horarios: Horario[] = [
-    { nome: "almoco", rotas: [
-        { nome: "teste", id: 1, pontos: ["ponto1", "ponto2"] },
-        { nome: "teste", id: 2, pontos: ["ponto1", "ponto2", "ponto3"] },
-        { nome: "teste", id: 3, pontos: ["ponto1"] },
-        { nome: "teste", id: 4, pontos: ["ponto1", "ponto2"] }
-    ], intervaloPontos: 15 },
-]
+
+
 function Previsão() {
+  const horarios = circularAPI.horariosDate
   return (
       
       <div className='Previsão'>
@@ -59,10 +50,13 @@ function Previsão() {
           </section>     
           <div className='Previsões'>
             {
-            Horarios[0].rotas.map( 
+            horarios.rotas.map( 
                 (rota:Rotas) => {
+                    const horas = circularAPI.calculateTime('Letras ', rota)
+                    const horaChegada = horas.tempo
+                    const restante = horas.restante
                     return (
-                      <Horario horaChegada="12:00" horaPrevisão="12:15" nome={rota.nome}></Horario>
+                      <Horario horaChegada={horaChegada} horaPrevisão={restante} nome={rota.nome}></Horario>
                 );
                 }
             )

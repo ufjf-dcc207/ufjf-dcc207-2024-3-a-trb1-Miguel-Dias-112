@@ -1,14 +1,16 @@
 export type Rotas= {
     nome: string
-    pontos: string[]
+    pontos: string[],
   }
 type Horario = {
     nome: string,
     rotas: Rotas[],
+    
     intervaloPontos: number,
     inicio: string,
     fim: string,
 }
+
 const OdontoIchDireto ={
     nome: "Odonto-ICH direto",
     pontos: [ "RU",  "ICB ", "Educação Física ", "Curva da Represa ", "Farmácia ", "Enfermagem ", "Direito ", "Letras "," Ciências Biológicas ", "IAD ", "RU"] 
@@ -60,9 +62,22 @@ const Horarios: Horario[] = [
             HURUDireto,
             Circular
         ],
+        
         intervaloPontos: 5
       }
 ]
+const HorariosFora: Horario= {
+    nome: "fora do horário",
+    inicio: "21:00:00",
+    fim: "24:00:00",
+    rotas: [
+        {nome: "Fora do horário",
+        pontos: ["Fora do horário"],}
+        
+    ],
+    
+    intervaloPontos: 5
+  }
 class CircularAPI {
     getRotas(): Rotas[]{
         return Rotas
@@ -80,19 +95,37 @@ class CircularAPI {
             return rota.nome === nome
         })[0]
     }
-    getHorarioByDate(){
+    calculateTime(ponto: string, rota: Rotas): {tempo:string, restante:string}{
+        const index = rota.pontos.indexOf(ponto)
+        const horario = this.horariosDate
+        const intervalo = horario.intervaloPontos
+        const time = new Date()
+        time.setMinutes(time.getMinutes() + intervalo * index)
+        const hours = time.getHours().toString().padStart(2, '0')
+        const minutes = time.getMinutes().toString().padStart(2, '0')
+
+        const diaAtual = new Date()
+        const diffInMs   = time.getTime() - diaAtual.getTime()
+        const diffInHours = Math.floor(diffInMs / 1000 / 60 / 60)
+        
+        return {
+            tempo: `${hours}:${minutes}`,
+            restante: `${diffInHours}h ${time.getMinutes()}m`
+        }
+    }
+    get horariosDate(): Horario{
         const date = new Date()
-        const hora = date.getHours()
-        const minuto = date.getMinutes()
-        const currentHorario = `${hora}:${minuto}`
-        const horario = Horarios.filter( (horario) => {
-            return horario.inicio <= currentHorario && horario.fim >= currentHorario
+        const _horario = Horarios.filter( (horario: Horario) => {
+            const inicio = new Date(date.toDateString() + " " + horario.inicio)
+            const fim = new Date(date.toDateString() + " " + horario.fim)
+            return date >= inicio && date <= fim
         })
-        console.log("horarioapi",horario)
-        return horario
+        if(_horario.length == 0){
+            return HorariosFora
+        }else{
+            return _horario[0]
+        }
     }
-    static getHorariosAlmoco(){
-        return Horarios
-    }
+   
 }
 export default new CircularAPI()
