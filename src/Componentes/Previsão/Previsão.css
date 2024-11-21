@@ -63,7 +63,7 @@
     border-bottom: 2px solid white;
 }
 .Previsões{
-    height: 100%;
+    height: auto;
     width: 100%;
     display: flex;
     justify-content: flex-start;
@@ -71,7 +71,7 @@
     flex-direction: column;
     gap: 40px;
     margin-top: 30px;
-    padding-bottom: 250px;
+    padding-bottom: 100px;
 }
 .Previsões .container{
     width: 80%;
