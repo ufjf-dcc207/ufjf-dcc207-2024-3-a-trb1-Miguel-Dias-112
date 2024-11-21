@@ -64,6 +64,14 @@ const Horarios: Horario[] = [
       }
 ]
 class CircularAPI {
+    getRotas(): Rotas[]{
+        return Rotas
+    }
+    getRotasNome(): string[]{
+        return Rotas.map( (rota) => {
+            return rota.nome
+        })
+    }
     getRotasbyName(nome: string): Rotas[]{
         return Rotas.filter( (rota) => {
             return rota.nome === nome

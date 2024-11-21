@@ -5,6 +5,8 @@ import { useState,useRef } from 'react'
 function Rotas() {
   const [rota, setRota] = useState<Rotas[]>([])
   const selectIPT = useRef<HTMLSelectElement>(null)
+  const rotasNome = CircularAPI.getRotasNome()
+
   function onSelectHandler(){
     const e = selectIPT.current!
     const nome = e.options[e.selectedIndex].value;
@@ -21,10 +23,9 @@ function Rotas() {
         <section>
             <label htmlFor="cars">Escolha uma rota:</label>
               <select ref={selectIPT} onSelect={onSelectHandler} name="cars">
-                <option value="volvo">anel</option>
-                <option value="saab">anel</option>
-                <option value="fiat">anel</option>
-                <option value="audi">anel</option>
+                {rotasNome.map( (nome) => {
+                  return <option value={nome}>{nome}</option>
+                })}
               </select>
           </section>     
           <div className='Pontos'>
