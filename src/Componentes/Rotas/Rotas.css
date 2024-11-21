@@ -37,19 +37,26 @@
 }
 .Rotas section{
     border: 5px solid black;
+    color: white;
+    background-color: #242424;
     margin-top: 40px;
     padding: 20px;
     display: flex;
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-    gap:10px
+    gap:20px;
+    width: 80%;
+    flex-direction: row;
 }
 .Rotas section label{
     font-size: 20px;
     font-weight: bold;
     display: flex;
+    background-color: #242424;
+
 }
+
 .Rotas section select{
     width: auto;
     height: 100%;
@@ -57,6 +64,8 @@
     border: 0px solid black;
     background: none;
     border-bottom: 2px solid black;
+    color:white;
+    background-color: #242424;
 }
 .Rotas main .Pontos{
     margin-top: 50px;
