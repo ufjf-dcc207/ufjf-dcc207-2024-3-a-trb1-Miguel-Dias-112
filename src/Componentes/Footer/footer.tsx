@@ -9,8 +9,8 @@ function Footer() {
     }
     return (
         <footer >
-            <button onClick={()=>{handleClick('/cadeCircular/rotas')}}>Rotas</button>
-            <button onClick={()=>{handleClick('/cadeCircular/')}}>Previsão</button>
+            <button onClick={()=>{handleClick('/CadeCircularUfjf/rotas')}}>Rotas</button>
+            <button onClick={()=>{handleClick('/CadeCircularUfjf/previsoes')}}>Previsão</button>
 
         </footer>
     )
