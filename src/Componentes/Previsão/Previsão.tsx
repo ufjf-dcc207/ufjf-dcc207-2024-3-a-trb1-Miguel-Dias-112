@@ -30,6 +30,7 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
 function Previsão() {
   const horarios = circularAPI.horariosDate
   const [ponto, setPonto] = useState<string>('Letras ')
+
   const select = useRef<HTMLSelectElement>(null)
   function onchangeHandler(){
     const e = select.current!
@@ -46,7 +47,7 @@ function Previsão() {
         <main>
         <section className='sectionSelect'>
             <label htmlFor="cars">Ponto Atual:</label>
-              <select id="cars" name="cars">
+              <select ref={select} onChange={onchangeHandler}>
                 {pontos.map( (ponto) => {
                   return <option value={ponto}>{ponto}</option>
                 })}
@@ -56,7 +57,7 @@ function Previsão() {
             {
             horarios.rotas.map( 
                 (rota:Rotas) => {
-                    const horas = circularAPI.calculateTime('Letras ', rota)
+                    const horas = circularAPI.calculateTime(ponto, rota)
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     return (
