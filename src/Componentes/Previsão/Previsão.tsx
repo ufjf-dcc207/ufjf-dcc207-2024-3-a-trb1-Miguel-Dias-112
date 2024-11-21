@@ -27,9 +27,8 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
                 <h3>Previsão:</h3>
                 <p>{horaPrevisão}</p>
             </section>
-
         </div>
-        
+        <div className='blink'></div>
     </div>
     )
 }
@@ -49,7 +48,7 @@ function Previsão() {
           <h1>Previsão do Circular</h1>
         </header>
         <main>
-        <section>
+        <section className='sectionSelect'>
             <label htmlFor="cars">Ponto Atual:</label>
               <select id="cars" name="cars">
                 <option value="volvo">anel</option>
@@ -57,7 +56,6 @@ function Previsão() {
                 <option value="fiat">anel</option>
                 <option value="audi">anel</option>
               </select>
-              <button>encontre pra mim</button>
           </section>     
           <div className='Previsões'>
             {
