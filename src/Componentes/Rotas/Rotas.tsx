@@ -1,17 +1,9 @@
 import './Rotas.css'
-type Rotas= {
-  nome: string
-  id: number
-  pontos: string[]
-}
-const rotas: Rotas[] = [
-  { nome: "teste", id: 1, pontos: ["ponto1", "ponto2"] },
-  { nome: "teste", id: 2, pontos: ["ponto1", "ponto2", "ponto3"] },
-  { nome: "teste", id: 3, pontos: ["ponto1"] },
-  { nome: "teste", id: 4, pontos: ["ponto1", "ponto2"] }
-]
+import type {Rotas} from '../../APIS/circularAPI.tsx'
+
+
 function Rotas() {
-  const pontos:string[] = rotas[0].pontos
+  
   return (
       
       <div className='Rotas'>

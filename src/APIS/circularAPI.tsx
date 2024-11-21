@@ -1,4 +1,4 @@
-type Rotas= {
+export type Rotas= {
     nome: string
     pontos: string[]
   }
