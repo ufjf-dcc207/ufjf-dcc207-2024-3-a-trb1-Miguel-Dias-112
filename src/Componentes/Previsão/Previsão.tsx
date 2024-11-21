@@ -1,18 +1,11 @@
 import './Previsão.css'
-type Rotas= {
-    nome: string
-    id: number
-    pontos: string[]
-  }
-type Horario = {
-    nome: string,
-    rotas: Rotas[],
-    intervaloPontos: number,
-}
-type HorarioProps = {
-    horaChegada: string,
-    horaPrevisão: string,
-    nome: string,
+import circularAPI, { Rotas } from '../../APIS/circularAPI'
+import {useRef, useState} from 'react'
+
+interface HorarioProps {
+    horaChegada: string;
+    horaPrevisão: string;
+    nome: string;
 }
 function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
     return(
@@ -32,15 +25,19 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
     </div>
     )
 }
-const Horarios: Horario[] = [
-    { nome: "almoco", rotas: [
-        { nome: "teste", id: 1, pontos: ["ponto1", "ponto2"] },
-        { nome: "teste", id: 2, pontos: ["ponto1", "ponto2", "ponto3"] },
-        { nome: "teste", id: 3, pontos: ["ponto1"] },
-        { nome: "teste", id: 4, pontos: ["ponto1", "ponto2"] }
-    ], intervaloPontos: 15 },
-]
+
+
 function Previsão() {
+  const horarios = circularAPI.horariosDate
+  const [ponto, setPonto] = useState<string>('Letras ')
+
+  const select = useRef<HTMLSelectElement>(null)
+  function onchangeHandler(){
+    const e = select.current!
+    const ponto = e.options[e.selectedIndex].value
+    setPonto(ponto)
+  }
+  const pontos = circularAPI.getRotasbyName('Circular').pontos
   return (
       
       <div className='Previsão'>
@@ -50,19 +47,21 @@ function Previsão() {
         <main>
         <section className='sectionSelect'>
             <label htmlFor="cars">Ponto Atual:</label>
-              <select id="cars" name="cars">
-                <option value="volvo">anel</option>
-                <option value="saab">anel</option>
-                <option value="fiat">anel</option>
-                <option value="audi">anel</option>
+              <select ref={select} onChange={onchangeHandler}>
+                {pontos.map( (ponto) => {
+                  return <option value={ponto}>{ponto}</option>
+                })}
               </select>
           </section>     
           <div className='Previsões'>
             {
-            Horarios[0].rotas.map( 
+            horarios.rotas.map( 
                 (rota:Rotas) => {
+                    const horas = circularAPI.calculateTime(ponto, rota)
+                    const horaChegada = horas.tempo
+                    const restante = horas.restante
                     return (
-                      <Horario horaChegada="12:00" horaPrevisão="12:15" nome={rota.nome}></Horario>
+                      <Horario horaChegada={horaChegada} horaPrevisão={restante} nome={rota.nome}></Horario>
                 );
                 }
             )
