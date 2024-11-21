@@ -1,9 +1,15 @@
 import './Rotas.css'
 import type {Rotas} from '../../APIS/circularAPI.tsx'
-
-
+import CircularAPI from '../../APIS/circularAPI.tsx'
+import { useState,useRef } from 'react'
 function Rotas() {
-  
+  const [rota, setRota] = useState<Rotas[]>([])
+  const selectIPT = useRef<HTMLSelectElement>(null)
+  function onSelectHandler(){
+    const e = selectIPT.current!
+    const nome = e.options[e.selectedIndex].value;
+    setRota(CircularAPI.getRotasbyName(nome) || [])
+  }
   return (
       
       <div className='Rotas'>
@@ -14,7 +20,7 @@ function Rotas() {
         <main>
         <section>
             <label htmlFor="cars">Escolha uma rota:</label>
-              <select id="cars" name="cars">
+              <select ref={selectIPT} onSelect={onSelectHandler} name="cars">
                 <option value="volvo">anel</option>
                 <option value="saab">anel</option>
                 <option value="fiat">anel</option>
@@ -42,3 +48,6 @@ function Rotas() {
 }
 
 export default Rotas
+
+
+
