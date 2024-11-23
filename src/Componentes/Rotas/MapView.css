@@ -1,5 +1,5 @@
 @import "node_modules/ol/ol.css";
-#map {
+.map {
   
   width: 100%;
 
