@@ -6,7 +6,7 @@ import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
 function Rotas() {
 
-  const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName(''))
+  const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName('Odonto Direto'))
   
   const [rotaNome, setRotaNome] = useState<string>('Circular')
   const selectIPT = useRef<HTMLSelectElement>(null)
