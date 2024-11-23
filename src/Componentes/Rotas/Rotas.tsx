@@ -1,6 +1,5 @@
 import './Rotas.css'
 import type {Rotas} from '../../APIS/circularAPI.tsx'
-import CircularAPI from '../../APIS/circularAPI.tsx'
 import RotasApi from '../../APIS/rotasAPI.tsx'
 import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
