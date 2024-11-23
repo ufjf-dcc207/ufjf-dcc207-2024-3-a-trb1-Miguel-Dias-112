@@ -1,26 +1,25 @@
 import './Rotas.css'
 import type {Rotas} from '../../APIS/circularAPI.tsx'
 import CircularAPI from '../../APIS/circularAPI.tsx'
+import RotasApi from '../../APIS/rotasAPI.tsx'
 import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
 function Rotas() {
 
-  const [rota, setRota] = useState<Rotas | undefined>(CircularAPI.RotaDefault)
+  const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName('Circular'))
   const selectIPT = useRef<HTMLSelectElement>(null)
-  const rotasNome = CircularAPI.getRotasNome()
+  const rotasNome = RotasApi.RotasNome
 
   function onSelectHandler(){
     const e = selectIPT.current!
     const nome = e.options[e.selectedIndex].value;
-    setRota(CircularAPI.getRotasbyName(nome))
-    console.log(rota)
+    setRota(RotasApi.getRotaByName(nome))
   }
   return (
       
       <div className='Rotas'>
         <header>
-          <h1>Rotas do Circular</h1>
-                 
+          <h1>Rotas do Circular</h1>        
         </header>
         <main>
         <section>
@@ -32,9 +31,8 @@ function Rotas() {
               </select>
           </section>     
           <div className='Pontos'>
-                <MapView></MapView>
+                <MapView rota={rota}></MapView>
           </div>
-         
         </main>
          
       </div>
