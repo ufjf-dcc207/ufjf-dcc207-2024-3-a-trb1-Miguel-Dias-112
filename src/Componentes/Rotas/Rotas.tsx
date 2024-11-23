@@ -2,6 +2,7 @@ import './Rotas.css'
 import type {Rotas} from '../../APIS/circularAPI.tsx'
 import CircularAPI from '../../APIS/circularAPI.tsx'
 import { useState,useRef } from 'react'
+import { MapView } from './MapView.tsx'
 function Rotas() {
 
   const [rota, setRota] = useState<Rotas | undefined>(CircularAPI.RotaDefault)
@@ -13,7 +14,6 @@ function Rotas() {
     const nome = e.options[e.selectedIndex].value;
     setRota(CircularAPI.getRotasbyName(nome))
     console.log(rota)
-
   }
   return (
       
@@ -32,17 +32,7 @@ function Rotas() {
               </select>
           </section>     
           <div className='Pontos'>
-          {
-          rota?.pontos.map( 
-            (ponto:String) => {
-            return (
-              <div className='Ponto'>
-                <h3>{ponto}</h3>
-                <img src='https://www2.ufjf.br/eletrica_potencia/wp-content/uploads/sites/523/2014/08/ICE.jpg'>
-                </img>
-              </div>
-            )
-          })}
+                <MapView></MapView>
           </div>
          
         </main>
