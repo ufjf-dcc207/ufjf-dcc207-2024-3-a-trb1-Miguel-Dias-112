@@ -1,3 +1,33 @@
+const anexoIch = [
+    [-4827423.815761, -2484590.680306],//inicio ich anexo
+    [-4827425.010089, -2484587.694485],
+    [-4827421.277813, -2484573.959706],
+    [-4827424.412925, -2484565.599406],
+    [-4827432.623934, -2484552.312501],
+    [-4827442.178563, -2484528.873803],
+    [-4827448.000914, -2484505.435105],
+    [-4827445.015093, -2484471.844614],
+    [-4827429.040948, -2484380.926351],
+    [-4827422.024268, -2484360.324184],
+    [-4827402.168556, -2484326.733693],
+    [-4827394.106838, -2484323.150707],
+    [-4827391.121016, -2484316.656545],
+    [-4827393.584319, -2484309.117346],
+    [-4827400.227772, -2484305.758297],
+    [-4827407.095161, -2484307.251208],
+    [-4827411.573893, -2484313.222851],
+    [-4827410.678147, -2484320.388822],
+    [-4827404.557213, -2484325.912592],
+    [-4827402.093910, -2484326.733693],
+    [-4827411.126020, -2484345.917595],
+    [-4827421.949622, -2484360.025602],
+    [-4827428.443784, -2484376.820847],
+    [-4827447.851623, -2484505.136522],
+    [-4827432.623934, -2484551.864628],
+    [-4827434.415427, -2484585.529764],
+    [-4827434.564718, -2484585.753701],//fim ich anexo
+
+]
 const OdontoAnexo=[
     [-4827640.984175, -2484575.772764],
     [-4827614.319561, -2484570.439841],
@@ -47,18 +77,12 @@ const OdontoAnexo=[
    [-4827413.962550, -2484588.142358],
    [-4827423.815761, -2484590.680306],//inicio ich anexo
     [-4827434.564718, -2484585.753701],//fim ich anexo
-   
     [-4827472.186068, -2484615.462624],
     [-4827501.447118, -2484617.254117],
-     [-4827526.975891, -2484615.761206],
-     [-4827545.487984, -2484608.893817],
-     [-4827578.033437, -2484584.857954],
-     [-4827612.818257, -2484523.797906],
-    // [-4827592.365380, ,-2484573.959706],
-    // [-4827605.353703, -2484556.044778],
-    // [-4827609.533853, -2484546.340858],
-    // [-4827609.832435, -2484534.994737],
-    // [-4827614.012585, -2484518.722010]
+    [-4827526.975891, -2484615.761206],
+    [-4827545.487984, -2484608.893817],
+    [-4827578.033437, -2484584.857954],
+    [-4827612.818257, -2484523.797906],
 ]
 const HuAnexo=[
     [-4827748.971713, -2485155.299136],
@@ -154,9 +178,9 @@ const anelViario = [
     [-4827699.108496, -2485057.886712],
     [-4827725.682306, -2484708.620252],
     [-4827716.724842, -2484640.543524],
-     [-4827690.449613, -2484604.116502],
-     [-4827667.757371, -2484589.784560],
-     [-4827640.984175, -2484575.772764],
+    [-4827690.449613, -2484604.116502],
+    [-4827667.757371, -2484589.784560],
+    [-4827640.984175, -2484575.772764],
     [-4827621.178557, -2484555.746195],
     [-4827612.818257, -2484523.797906],//fim anexo ich
     [-4827652.081808, -2484335.392575],
@@ -165,34 +189,43 @@ const anelViario = [
     [-4827922.447938, -2484341.214927],
 ]
 
+
 export class RotasAPI {
     get RotasNome(): string[] {
         return ['Anel Viario', 'Circular', 'Odonto Direto', 'Odonto-Ich-RU', 'HU-RU Direto'];
     }
+    concatenaAnexo(rotaPrincipal: number[][], rotaAnexo:number[][]): number[][] {
+        let posI: number;
+        let posF: number;
+        posI = rotaPrincipal.map(e => e[0]).indexOf(rotaAnexo[0][0]);
+        posF = rotaPrincipal.map(e => e[0]).indexOf(rotaAnexo[rotaAnexo.length-1][0]);
+        const rotaCompleta = rotaPrincipal.slice(0,posI);
+        const Resto = rotaPrincipal.slice(posF+1);
+        rotaCompleta.push(...rotaAnexo)
+        rotaCompleta.push(...Resto)
+        
+        return rotaCompleta
+    }
     getRotaByName(nome:string): number[][] {
-      
+        
+        const HUDireto = this.concatenaAnexo(anelViario,HuAnexo)
+        const OdontoDireto = this.concatenaAnexo(anelViario,OdontoAnexo);
+        const OdontoIch = this.concatenaAnexo(OdontoDireto,anexoIch);
+        
+        let Circular = this.concatenaAnexo(HUDireto,OdontoIch); 
+
         switch (nome) {
+            case 'Circular':
+                return Circular;
             case 'HU-RU Direto':
-                console.log('HU-RU Direto')
-                const posI = anelViario.map(e => e[0]).indexOf(HuAnexo[0][0]);
-                const posF = anelViario.map(e => e[0]).indexOf(HuAnexo[HuAnexo.length-1][0]);
-                const HURUcompleto = anelViario.slice(0,posI);
-                const Resto = anelViario.slice(posF+1);
-                HURUcompleto.push(...HuAnexo)
-                HURUcompleto.push(...Resto)
-                return HURUcompleto
+                return HUDireto
             case 'Anel Viario':
                 return anelViario;
             case 'Odonto Direto':
-                const posI2 = anelViario.map(e => e[0]).indexOf(OdontoAnexo[0][0]);
-                const posF2 = anelViario.map(e => e[0]).indexOf(OdontoAnexo[OdontoAnexo.length-1][0]);
-                const OdontoCompleto = anelViario.slice(0,posI2);
-                const Resto2 = anelViario.slice(posF2+1);
-                OdontoCompleto.push(...OdontoAnexo)
-                OdontoCompleto.push(...Resto2)
-                return OdontoCompleto;
+                return OdontoDireto;
+            case 'Odonto-Ich-RU':
+                return OdontoIch;
             default:
-                
                 return anelViario;
         }
 

@@ -6,9 +6,8 @@ import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
 function Rotas() {
 
-  const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName('Odonto Direto'))
+  const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName(''))
   
-  const [rotaNome, setRotaNome] = useState<string>('Circular')
   const selectIPT = useRef<HTMLSelectElement>(null)
   const rotasNome = RotasApi.RotasNome
 
@@ -16,10 +15,8 @@ function Rotas() {
     const e = selectIPT.current!
     const nome = e.options[e.selectedIndex].value;
     setRota(RotasApi.getRotaByName(nome))
-    setRotaNome(nome)
   }
   return (
-      
       <div className='Rotas'>
         <header>
           <h1>Rotas do Circular</h1>        
@@ -34,7 +31,7 @@ function Rotas() {
               </select>
           </section>     
           <div className='Pontos'>
-                <MapView rota={rota} rotaNome={rotaNome}></MapView>
+                <MapView rota={rota}></MapView>
           </div>
         </main>
          
