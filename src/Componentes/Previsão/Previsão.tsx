@@ -37,7 +37,7 @@ function Previsão() {
     const ponto = e.options[e.selectedIndex].value
     setPonto(ponto)
   }
-  const pontos = circularAPI.getRotasbyName('Circular').pontos
+  const pontos = circularAPI.Pontos
   return (
       
       <div className='Previsão'>
@@ -46,7 +46,7 @@ function Previsão() {
         </header>
         <main>
         <section className='sectionSelect'>
-            <label htmlFor="cars">Ponto Atual:</label>
+            <label htmlFor="pontos">Ponto Atual:</label>
               <select ref={select} onChange={onchangeHandler}>
                 {pontos.map( (ponto) => {
                   return <option value={ponto}>{ponto}</option>
@@ -61,7 +61,7 @@ function Previsão() {
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-                    console.log(restanteInt)
+                    
                     if(restanteInt<=0){
                         return(
                           <></>

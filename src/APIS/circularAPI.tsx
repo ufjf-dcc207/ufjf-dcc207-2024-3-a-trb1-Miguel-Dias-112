@@ -13,23 +13,38 @@ type Horario = {
 
 const OdontoIchDireto ={
     nome: "Odonto-ICH direto",
-    pontos: [ "RU",  "ICB ", "Educação Física ", "Curva da Represa ", "Farmácia ", "Enfermagem ", "Direito ", "Letras "," Ciências Biológicas ", "IAD ", "RU"] 
+    pontos: [   "RU",  "ICB ", "Educação Física ","Curva da Represa ",
+                "Farmácia ", "Enfermagem ","Direito ", "Letras ",
+                " Ciências Biológicas ", "IAD "] 
 }
 const OdontoIchRU ={ 
     nome: "Odonto-ICH-RU",  
-    pontos:   ["RU", "CRITT", "CBR", "ICB", "FAEFID", "Curva da Represa", "Odonto", "Farmácia", "Economia", "Enfermagem", "ICH", "Direito", "Letras", "ICB", "ICE", "IAD", "Engenharia"], 
+    pontos:   [ "RU", "CRITT", "CBR", "ICB", "FAEFID",
+                "Curva da Represa", "Odonto", "Farmácia",
+                "Economia", "Enfermagem", "ICH", "Direito",
+                "Letras", "ICB", "ICE", "IAD", "Engenharia"], 
 }
 const AnelViario ={
     nome: "Anel Viário",
-    pontos: [ "FAEFID ", "Curva da Represa ", "Direito ", "Letras ", "ICB ", "ICE ", "IAD ", "Engenharia ", "RU ", "CRITT ", "CBR ", "ICB"] 
+    pontos: [   "FAEFID ", "Curva da Represa ", "Direito ",
+                "Letras ", "ICB ", "ICE ", "IAD ", "Engenharia ",
+                "RU ", "CRITT ", "CBR ", "ICB"] 
 }
 const HURUDireto ={
     nome: "HU-RU direto",
-    pontos: [ "Restaurante Universitário (RU) ", "ICB ", "Educação Física ", "Hospital Universitário (HU) ", "Corpo de Bombeiros ", "Direito ", "Letras ", "Ciências Biológicas ", "IAD ", "RU"] 
+    pontos: [   "Restaurante Universitário (RU) ", "ICB ",
+                "Educação Física ", "Hospital Universitário (HU) ",
+                "Corpo de Bombeiros ", "Direito ", "Letras ", 
+                "Ciências Biológicas ", "IAD ", "RU"] 
 }
 const Circular ={
     nome: "Circular",
-    pontos: [ "Letras ", "ICB ", "ICE ", "IAD ", "Engenharia ", "RU ", "CRITT ", "CBR ", "ICB ", "FAEFID ", "HU ", "Corpo de Bombeiros ", "Odonto ", "Economia ", "Enfermagem ", "Educação ", "ICH ", "Direito"] 
+    pontos: [   "Letras ", "ICB ", "ICE ", 
+                "IAD ", "Engenharia ", "RU ",
+                "CRITT ", "CBR ", "ICB ", "FAEFID ",
+                "HU ", "Corpo de Bombeiros ", "Odonto ",
+                "Economia ", "Enfermagem ", "Educação ", 
+                "ICH ", "Direito"] 
 }
 
 const Rotas: Rotas[] = [
@@ -54,7 +69,7 @@ const Horarios: Horario[] = [
     {
         nome: "jantar",
         inicio: "17:00:00",
-        fim: "20:15:00",
+        fim: "24:15:00",
         rotas: [
             OdontoIchDireto,
             OdontoIchRU,
@@ -62,23 +77,9 @@ const Horarios: Horario[] = [
             HURUDireto,
             Circular
         ],
-        
         intervaloPontos: 5
       },
-      {
-        nome: "jantar",
-        inicio: "00:00:00",
-        fim: "12:15:00",
-        rotas: [
-            OdontoIchDireto,
-            OdontoIchRU,
-            AnelViario,
-            HURUDireto,
-            Circular
-        ],
-        
-        intervaloPontos: 5
-      }
+     
 ]
 const HorariosFora: Horario= {
     nome: "fora do horário",
@@ -93,22 +94,18 @@ const HorariosFora: Horario= {
     intervaloPontos: 5
   }
 class CircularAPI {
-    getRotas(): Rotas[]{
-        return Rotas
+   
+    
+    get Pontos(): string[]{
+        return ["Letras ", "ICB ", "ICE ", 
+            "IAD ", "Engenharia ", "RU ",
+            "CRITT ", "CBR ", "ICB ", "FAEFID ",
+            "HU ", "Corpo de Bombeiros ", "Odonto ",
+            "Economia ", "Enfermagem ", "Educação ", 
+            "ICH ", "Direito"] 
+        
     }
-    get RotaDefault(): Rotas{
-        return Rotas[0]
-    }
-    getRotasNome(): string[]{
-        return Rotas.map( (rota) => {
-            return rota.nome
-        })
-    }
-    getRotasbyName(nome: string): Rotas{
-        return Rotas.filter( (rota) => {
-            return rota.nome === nome
-        })[0]
-    }
+    
     calculateTime(ponto: string, rota: Rotas): {tempo:string, restante:string}{
         const index = rota.pontos.indexOf(ponto)
         const horario = this.horariosDate
@@ -117,7 +114,6 @@ class CircularAPI {
         time.setMinutes(time.getMinutes() + intervalo * index)
         const hours = time.getHours().toString().padStart(2, '0')
         const minutes = time.getMinutes().toString().padStart(2, '0')
-
         const diaAtual = new Date()
         const diffInMs   = time.getTime() - diaAtual.getTime()
         const diffInMinutes = Math.floor(diffInMs / 1000 / 60)
@@ -139,8 +135,6 @@ class CircularAPI {
             return _horario[0]
         }
     }
-   get Pontos(): string[]{
-        return this.getRotasbyName('Circular').pontos
-    }
+ 
 }
 export default new CircularAPI()
