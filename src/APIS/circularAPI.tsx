@@ -127,7 +127,7 @@ class CircularAPI {
         const minutosDecorridos = Math.floor((dataAtual.getTime() - dataInicioRota.getTime()) / 60000);
     
         // Calcular o tempo atual no ciclo da rota
-        const tempoAtual = minutosDecorridos % (totalPontos * intervalo);
+        const tempoAtual = minutosDecorridos % (totalPontos * intervalo) + intervalo * index;
         // Calcular o tempo restante para completar o ciclo
         const tempoRestante = (totalPontos * intervalo) - tempoAtual;
         // Converter o tempo restante para horas e minutos formatados
