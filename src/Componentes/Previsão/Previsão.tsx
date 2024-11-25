@@ -1,7 +1,7 @@
 import './Previsão.css'
 import circularAPI, { Rotas } from '../../APIS/circularAPI'
 import {useRef, useState} from 'react'
-
+import { Ponto } from '../../APIS/circularAPI'
 interface HorarioProps {
     horaChegada: string;
     horaPrevisão: string;
@@ -29,13 +29,13 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
 
 function Previsão() {
   const horarios = circularAPI.horariosDate
-  const [ponto, setPonto] = useState<string>('Letras ')
+  const [ponto, setPonto] = useState<Ponto>('Letras')
 
   const select = useRef<HTMLSelectElement>(null)
   function onchangeHandler(){
     const e = select.current!
     const ponto = e.options[e.selectedIndex].value
-    setPonto(ponto)
+    setPonto(ponto as Ponto)
   }
   const pontos = circularAPI.Pontos
   return (
@@ -57,12 +57,12 @@ function Previsão() {
             {
             horarios.rotas.map( 
                 (rota:Rotas) => {
-                    const horas = circularAPI.calculateTime(ponto, rota)
+                    const horas = circularAPI.calcularHorarioRestante(rota, ponto, horarios)
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-                    
-                    if(restanteInt<=0){
+                    console.log(restanteInt)
+                    if(restanteInt<0){
                         return(
                           <></>
                         )

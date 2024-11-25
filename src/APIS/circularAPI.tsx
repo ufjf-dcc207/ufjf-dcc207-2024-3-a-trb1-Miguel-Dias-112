@@ -2,15 +2,16 @@ export type Rotas= {
     nome: string
     pontos: Ponto[],
   }
-type Horario = {
+export type Horario = {
     nome: string,
     rotas: Rotas[],
     intervaloPontos: number,
     inicio: string,
     fim: string,
 }
-type Ponto =  "Letras" | "ICB" |"ICE"|"IAD"|"Engenharia"|'CRITT'|"RU"|"CBR"| "ICB"| "FAEFID"| "Direito"|
-              "HU"|"Curva Repressa"|"Corpo de Bombeiros"| "Odonto"|"Economia"| "Educação"|"ICH"
+export type Ponto =    "Letras" | "ICB" |"ICE"|"IAD"|"Engenharia"|'CRITT'|"RU"|
+                "CBR"| "ICB"| "FAEFID"| "Direito"|"HU"|"Curva Repressa"|
+                "Corpo de Bombeiros"| "Odonto"|"Economia"| "Educação"|"ICH"
 const AnelViario:Rotas ={
     nome: "Anel Viário",
     pontos:["Letras", "ICB", "ICE", "IAD", "Engenharia","RU",
@@ -99,46 +100,46 @@ class CircularAPI {
    
     
     get Pontos(): string[]{
-        return [
-            "Letras ", "ICB ", "ICE ", 
-            "IAD ", "Engenharia ", "RU ",
-            "CBR ", "ICB", "FAEFID ",
-            "HU ", "Corpo de Bombeiros ", "Odonto ",
-            "Economia ", "Enfermagem ", "Educação ", 
-            "ICH ", "Direito"] 
+        const todosPontos = [
+            "Letras" , "ICB" ,"ICE","IAD","Engenharia",'CRITT',"RU",
+            "CBR", "ICB", "FAEFID", "Direito","HU","Curva Repressa",
+            "Corpo de Bombeiros", "Odonto","Economia", "Educação","ICH"
+        ]
+        return todosPontos
     }
     
-    calculateTime(ponto: string, rota: Rotas): {tempo:string, restante:string}{
-        const index = rota.pontos.indexOf(ponto as Ponto)
-        const horario = this.horariosDate
-        const intervalo = horario.intervaloPontos
-
-        const time = new Date()
-        time.setMinutes(time.getMinutes() + intervalo * index)
-        const hours = time.getHours().toString().padStart(2, '0')
-        const minutes = time.getMinutes().toString().padStart(2, '0')
-        const diaAtual = new Date()
-        const diffInMs   = time.getTime() - diaAtual.getTime()
-        const diffInMinutes = Math.floor(diffInMs / 1000 / 60)
+    calcularHorarioRestante = (rota: Rotas, ponto: Ponto, horariosDate: Horario) => {
+        const index = rota.pontos.indexOf(ponto as Ponto);
+        const intervalo = horariosDate.intervaloPontos;
+    
+        const horarioAtual = new Date();
+        const horarioPrevisto = new Date(horarioAtual);
+    
+        horarioPrevisto.setMinutes(horarioAtual.getMinutes() + intervalo * index);
+    
+        const hours = horarioPrevisto.getHours().toString().padStart(2, '0');
+        const minutes = horarioPrevisto.getMinutes().toString().padStart(2, '0');
+    
+        const diferencaEmMs = horarioPrevisto.getTime() - horarioAtual.getTime();
+        const diferencaEmMinutos = Math.floor(diferencaEmMs / 1000 / 60);
+    
         return {
             tempo: `${hours}:${minutes}`,
-            restante: `${diffInMinutes}m`
-        }
+            restante: `${diferencaEmMinutos}m`,
+        };
+    };
+    get horariosDate(): Horario {
+        const date = new Date();
+        // Filtrar os horários que estão no intervalo atual
+        const horarioAtual = Horarios.find((horario: Horario) => {
+            const inicio = new Date(`${date.toDateString()} ${horario.inicio}`);
+            const fim = new Date(`${date.toDateString()} ${horario.fim}`);
+            return date >= inicio && date <= fim;
+        });
+        // Retorna o horário encontrado ou um horário padrão
+        return horarioAtual ?? HorariosFora;
     }
-    get horariosDate(): Horario{
-        
-        const date = new Date()
-        const _horario = Horarios.filter( (horario: Horario) => {
-            const inicio = new Date(date.toDateString() + " " + horario.inicio)
-            const fim = new Date(date.toDateString() + " " + horario.fim)
-            return date >= inicio && date <= fim
-        })
-        if(_horario.length == 0){
-            return HorariosFora
-        }else{
-            return _horario[0]
-        }
-    }
+    
  
 }
 export default new CircularAPI()
