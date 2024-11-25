@@ -2,31 +2,7 @@ import './Previsão.css'
 import circularAPI, { Rotas } from '../../APIS/circularAPI'
 import {useRef, useState} from 'react'
 import { Ponto } from '../../APIS/circularAPI'
-interface HorarioProps {
-    horaChegada: string;
-    horaPrevisão: string;
-    nome: string;
-    blinkColor: string;
-}
-function Horario( {horaChegada, horaPrevisão, nome, blinkColor}: HorarioProps){
-    return(
-        <div className='container'>
-        <h2>{nome}</h2>
-        <div className='data'>
-            <section>
-                <h3>chegada:</h3>
-                <p>{horaChegada}</p>
-            </section>
-            <section>
-                <h3>Previsão:</h3>
-                <p>{horaPrevisão}</p>
-            </section>
-        </div>
-
-        <div className='blink' style={{backgroundColor:blinkColor}}></div>
-    </div>
-    )
-}
+import Horario from './Horario'
 
 
 function Previsão() {
@@ -35,8 +11,8 @@ function Previsão() {
 
   const select = useRef<HTMLSelectElement>(null)
   function onchangeHandler(){
-    const e = select.current!
-    const ponto = e.options[e.selectedIndex].value
+    const element = select.current!
+    const ponto = element.options[element.selectedIndex].value
     setPonto(ponto as Ponto)
   }
   const pontos = circularAPI.Pontos
@@ -58,7 +34,6 @@ function Previsão() {
           </section>     
           <div className='Previsões'>
             {
-
             horarios.rotas.map( 
                 (rota:Rotas) => {
                     const horas = circularAPI.calcularHorarioRestante(rota, ponto, horarios)
@@ -66,14 +41,7 @@ function Previsão() {
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
 
-                    
-                    if(restanteInt<0){
-                        return(
-                          <></>
-                        )
-                    }
-                    console.log(restanteInt)
-                    return (
+                    return restanteInt < 0 ? null : (
                       <Horario 
                       horaChegada={horaChegada} 
                       horaPrevisão={restante} 
@@ -83,7 +51,6 @@ function Previsão() {
                     )
                 }
             )
-              
             }
           </div>
          
