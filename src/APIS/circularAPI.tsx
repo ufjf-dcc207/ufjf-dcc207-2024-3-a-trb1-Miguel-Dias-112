@@ -1,16 +1,16 @@
 export type Rotas= {
     nome: string
-    pontos: string[],
+    pontos: Ponto[],
   }
 type Horario = {
     nome: string,
     rotas: Rotas[],
-    
     intervaloPontos: number,
     inicio: string,
     fim: string,
 }
-
+type Ponto =  "Letras " | "ICB " |"ICE "|"IAD "|"Engenharia "|"RU "|"CBR "| "ICB"| "FAEFID "| "Direito"|
+              "HU"|"Corpo de Bombeiros "| "Odonto "|"Economia "| "Enfermagem "| "Educação "|"ICH "
 const OdontoIchDireto ={
     nome: "Odonto-ICH direto",
     pontos: [   "RU",  "ICB ", "Educação Física ","Curva da Represa ",
@@ -32,6 +32,7 @@ const AnelViario ={
 }
 const HURUDireto ={
     nome: "HU-RU direto",
+    
     pontos: [   "Restaurante Universitário (RU) ", "ICB ",
                 "Educação Física ", "Hospital Universitário (HU) ",
                 "Corpo de Bombeiros ", "Direito ", "Letras ", 
@@ -97,13 +98,13 @@ class CircularAPI {
    
     
     get Pontos(): string[]{
-        return ["Letras ", "ICB ", "ICE ", 
+        return [
+            "Letras ", "ICB ", "ICE ", 
             "IAD ", "Engenharia ", "RU ",
-            "CRITT ", "CBR ", "ICB ", "FAEFID ",
+            "CBR ", "ICB", "FAEFID ",
             "HU ", "Corpo de Bombeiros ", "Odonto ",
             "Economia ", "Enfermagem ", "Educação ", 
             "ICH ", "Direito"] 
-        
     }
     
     calculateTime(ponto: string, rota: Rotas): {tempo:string, restante:string}{
@@ -123,6 +124,7 @@ class CircularAPI {
         }
     }
     get horariosDate(): Horario{
+        
         const date = new Date()
         const _horario = Horarios.filter( (horario: Horario) => {
             const inicio = new Date(date.toDateString() + " " + horario.inicio)
