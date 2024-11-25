@@ -6,8 +6,9 @@ interface HorarioProps {
     horaChegada: string;
     horaPrevisão: string;
     nome: string;
+    blinkColor: string;
 }
-function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
+function Horario( {horaChegada, horaPrevisão, nome, blinkColor}: HorarioProps){
     return(
         <div className='container'>
         <h2>{nome}</h2>
@@ -21,7 +22,8 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
                 <p>{horaPrevisão}</p>
             </section>
         </div>
-        <div className='blink'></div>
+
+        <div className='blink' style={{backgroundColor:blinkColor}}></div>
     </div>
     )
 }
@@ -63,14 +65,22 @@ function Previsão() {
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
+
+                    
                     if(restanteInt<0){
                         return(
                           <></>
                         )
                     }
+                    console.log(restanteInt)
                     return (
-                      <Horario horaChegada={horaChegada} horaPrevisão={restante} nome={rota.nome}></Horario>
-                );
+                      <Horario 
+                      horaChegada={horaChegada} 
+                      horaPrevisão={restante} 
+                      nome={rota.nome} 
+                      blinkColor={restanteInt < 15 ? 'green' : restanteInt < 30 ? 'orange' : 'red'}
+                      />
+                    )
                 }
             )
               
