@@ -9,47 +9,48 @@ type Horario = {
     inicio: string,
     fim: string,
 }
-type Ponto =  "Letras " | "ICB " |"ICE "|"IAD "|"Engenharia "|"RU "|"CBR "| "ICB"| "FAEFID "| "Direito"|
-              "HU"|"Corpo de Bombeiros "| "Odonto "|"Economia "| "Enfermagem "| "Educação "|"ICH "
-const OdontoIchDireto ={
-    nome: "Odonto-ICH direto",
-    pontos: [   "RU",  "ICB ", "Educação Física ","Curva da Represa ",
-                "Farmácia ", "Enfermagem ","Direito ", "Letras ",
-                " Ciências Biológicas ", "IAD "] 
-}
-const OdontoIchRU ={ 
-    nome: "Odonto-ICH-RU",  
-    pontos:   [ "RU", "CRITT", "CBR", "ICB", "FAEFID",
-                "Curva da Represa", "Odonto", "Farmácia",
-                "Economia", "Enfermagem", "ICH", "Direito",
-                "Letras", "ICB", "ICE", "IAD", "Engenharia"], 
-}
-const AnelViario ={
+type Ponto =  "Letras" | "ICB" |"ICE"|"IAD"|"Engenharia"|'CRITT'|"RU"|"CBR"| "ICB"| "FAEFID"| "Direito"|
+              "HU"|"Curva Repressa"|"Corpo de Bombeiros"| "Odonto"|"Economia"| "Educação"|"ICH"
+const AnelViario:Rotas ={
     nome: "Anel Viário",
-    pontos: [   "FAEFID ", "Curva da Represa ", "Direito ",
-                "Letras ", "ICB ", "ICE ", "IAD ", "Engenharia ",
-                "RU ", "CRITT ", "CBR ", "ICB"] 
+    pontos:["Letras", "ICB", "ICE", "IAD", "Engenharia","RU",
+            "CRITT", "CBR", "ICB", "FAEFID","Curva Repressa",
+            "Corpo de Bombeiros","Direito"]
 }
-const HURUDireto ={
-    nome: "HU-RU direto",
-    
-    pontos: [   "Restaurante Universitário (RU) ", "ICB ",
-                "Educação Física ", "Hospital Universitário (HU) ",
-                "Corpo de Bombeiros ", "Direito ", "Letras ", 
-                "Ciências Biológicas ", "IAD ", "RU"] 
-}
-const Circular ={
+const Circular:Rotas ={
     nome: "Circular",
-    pontos: [   "Letras ", "ICB ", "ICE ", 
-                "IAD ", "Engenharia ", "RU ",
-                "CRITT ", "CBR ", "ICB ", "FAEFID ",
-                "HU ", "Corpo de Bombeiros ", "Odonto ",
-                "Economia ", "Enfermagem ", "Educação ", 
-                "ICH ", "Direito"] 
+    pontos: [   "Letras", "ICB", "ICE", 
+                "IAD", "Engenharia", "RU",
+                "CRITT", "CBR", "ICB", "FAEFID",
+                "HU", "Corpo de Bombeiros", "Odonto",
+                "Economia", "Educação","ICH", "Direito"]
+              
+}
+const OdontoDireto:Rotas ={
+    nome: "Odonto-Direto",
+    pontos: ["Letras", "ICB", "ICE", "IAD", "Engenharia","RU",
+            "CRITT", "CBR", "ICB", "FAEFID","Curva Repressa",
+            "Corpo de Bombeiros","Odonto","Economia","Educação",
+            "Direito"]
+}
+const OdontoIchRU:Rotas={ 
+    nome: "Odonto-ICH-RU",  
+    pontos:["Letras", "ICB", "ICE", "IAD", "Engenharia","RU",
+            "CRITT", "CBR", "ICB", "FAEFID","Curva Repressa",
+            "Corpo de Bombeiros","Odonto","Economia","Educação",
+            "ICH","Direito"]
 }
 
+const HURUDireto:Rotas={
+    nome: "HU-RU direto",
+    pontos:["Letras", "ICB", "ICE", "IAD", "Engenharia","RU",
+        "CRITT", "CBR", "ICB", "FAEFID","HU",
+        "Corpo de Bombeiros","Direito"]
+}
+
+
 const Rotas: Rotas[] = [
-    OdontoIchDireto,
+    OdontoDireto,
     AnelViario,
     HURUDireto,
     Circular
@@ -60,7 +61,7 @@ const Horarios: Horario[] = [
         inicio: "11:00:00",
         fim: "14:15:00",
         rotas: [
-            OdontoIchDireto,
+            OdontoDireto,
             OdontoIchRU,
             AnelViario,
             HURUDireto,
@@ -72,7 +73,7 @@ const Horarios: Horario[] = [
         inicio: "17:00:00",
         fim: "24:15:00",
         rotas: [
-            OdontoIchDireto,
+            OdontoDireto,
             OdontoIchRU,
             AnelViario,
             HURUDireto,
@@ -88,7 +89,7 @@ const HorariosFora: Horario= {
     fim: "24:00:00",
     rotas: [
         {nome: "Fora do horário",
-        pontos: ["Fora do horário"],}
+        pontos: [],}
         
     ],
     
@@ -108,9 +109,10 @@ class CircularAPI {
     }
     
     calculateTime(ponto: string, rota: Rotas): {tempo:string, restante:string}{
-        const index = rota.pontos.indexOf(ponto)
+        const index = rota.pontos.indexOf(ponto as Ponto)
         const horario = this.horariosDate
         const intervalo = horario.intervaloPontos
+
         const time = new Date()
         time.setMinutes(time.getMinutes() + intervalo * index)
         const hours = time.getHours().toString().padStart(2, '0')
