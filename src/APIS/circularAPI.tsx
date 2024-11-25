@@ -72,7 +72,7 @@ const Horarios: Horario[] = [
     {
         nome: "jantar",
         inicio: "17:00:00",
-        fim: "24:15:00",
+        fim: "20:15:00",
         rotas: [
             OdontoDireto,
             OdontoIchRU,
@@ -109,25 +109,38 @@ class CircularAPI {
     }
     
     calcularHorarioRestante = (rota: Rotas, ponto: Ponto, horariosDate: Horario) => {
+
+        
         const index = rota.pontos.indexOf(ponto as Ponto);
         const intervalo = horariosDate.intervaloPontos;
+        const totalPontos = rota.pontos.length;
     
-        const horarioAtual = new Date();
-        const horarioPrevisto = new Date(horarioAtual);
+        // Configurar o horário de início da rota
+        const dataInicioRota = new Date();
+        const [horaInicio, minutoInicio, segundoInicio] = horariosDate.inicio.split(':').map(Number);
+        dataInicioRota.setHours(horaInicio);
+        dataInicioRota.setMinutes(minutoInicio);
+        dataInicioRota.setSeconds(segundoInicio);
     
-        horarioPrevisto.setMinutes(horarioAtual.getMinutes() + intervalo * index);
+        // Calcular o tempo decorrido em minutos desde o início da rota
+        const dataAtual = new Date();
+        const minutosDecorridos = Math.floor((dataAtual.getTime() - dataInicioRota.getTime()) / 60000);
     
-        const hours = horarioPrevisto.getHours().toString().padStart(2, '0');
-        const minutes = horarioPrevisto.getMinutes().toString().padStart(2, '0');
-    
-        const diferencaEmMs = horarioPrevisto.getTime() - horarioAtual.getTime();
-        const diferencaEmMinutos = Math.floor(diferencaEmMs / 1000 / 60);
-    
+        // Calcular o tempo atual no ciclo da rota
+        const tempoAtual = minutosDecorridos % (totalPontos * intervalo);
+        // Calcular o tempo restante para completar o ciclo
+        const tempoRestante = (totalPontos * intervalo) - tempoAtual;
+        // Converter o tempo restante para horas e minutos formatados
+        
+        dataAtual.setMinutes(dataAtual.getMinutes() + tempoRestante);
+        const horasFormatadas = dataAtual.getHours().toString().padStart(2, '0');
+        const minutosFormatados = dataAtual.getMinutes().toString().padStart(2, '0');
         return {
-            tempo: `${hours}:${minutes}`,
-            restante: `${diferencaEmMinutos}m`,
+            tempo: `${horasFormatadas}:${minutosFormatados}`,
+            restante: `${tempoRestante}m`,
         };
     };
+    
     get horariosDate(): Horario {
         const date = new Date();
         // Filtrar os horários que estão no intervalo atual

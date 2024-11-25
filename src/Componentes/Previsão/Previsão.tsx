@@ -38,6 +38,7 @@ function Previsão() {
     setPonto(ponto as Ponto)
   }
   const pontos = circularAPI.Pontos
+
   return (
       
       <div className='Previsão'>
@@ -55,13 +56,13 @@ function Previsão() {
           </section>     
           <div className='Previsões'>
             {
+
             horarios.rotas.map( 
                 (rota:Rotas) => {
                     const horas = circularAPI.calcularHorarioRestante(rota, ponto, horarios)
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-                    console.log(restanteInt)
                     if(restanteInt<0){
                         return(
                           <></>
