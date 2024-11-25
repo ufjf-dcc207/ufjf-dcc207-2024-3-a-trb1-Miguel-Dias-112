@@ -1,7 +1,7 @@
 import './Previsão.css'
 import circularAPI, { Rotas } from '../../APIS/circularAPI'
 import {useRef, useState} from 'react'
-
+import { Ponto } from '../../APIS/circularAPI'
 interface HorarioProps {
     horaChegada: string;
     horaPrevisão: string;
@@ -29,15 +29,16 @@ function Horario( {horaChegada, horaPrevisão, nome}: HorarioProps){
 
 function Previsão() {
   const horarios = circularAPI.horariosDate
-  const [ponto, setPonto] = useState<string>('Letras ')
+  const [ponto, setPonto] = useState<Ponto>('Letras')
 
   const select = useRef<HTMLSelectElement>(null)
   function onchangeHandler(){
     const e = select.current!
     const ponto = e.options[e.selectedIndex].value
-    setPonto(ponto)
+    setPonto(ponto as Ponto)
   }
-  const pontos = circularAPI.getRotasbyName('Circular').pontos
+  const pontos = circularAPI.Pontos
+
   return (
       
       <div className='Previsão'>
@@ -46,7 +47,7 @@ function Previsão() {
         </header>
         <main>
         <section className='sectionSelect'>
-            <label htmlFor="cars">Ponto Atual:</label>
+            <label htmlFor="pontos">Ponto Atual:</label>
               <select ref={select} onChange={onchangeHandler}>
                 {pontos.map( (ponto) => {
                   return <option value={ponto}>{ponto}</option>
@@ -55,14 +56,14 @@ function Previsão() {
           </section>     
           <div className='Previsões'>
             {
+
             horarios.rotas.map( 
                 (rota:Rotas) => {
-                    const horas = circularAPI.calculateTime(ponto, rota)
+                    const horas = circularAPI.calcularHorarioRestante(rota, ponto, horarios)
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-                    console.log(restanteInt)
-                    if(restanteInt<=0){
+                    if(restanteInt<0){
                         return(
                           <></>
                         )
