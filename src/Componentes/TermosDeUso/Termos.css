@@ -4,6 +4,8 @@
     max-width: 800px;
     background-color: #f9f9f9;
     color: #333;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .termos-container h1 {
@@ -35,7 +37,11 @@
     padding: 10px 20px;
     background-color: #222;
     color: #fff;
-
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .voltar-button:hover {
