@@ -188,3 +188,4 @@
     [-4827727.772381, -2484294.188239],
     [-4827922.447938, -2484341.214927],
 ]
+export const rotasNome=['Anel Viario', 'Circular', 'Odonto Direto', 'Odonto-Ich-RU', 'HU-RU Direto']
