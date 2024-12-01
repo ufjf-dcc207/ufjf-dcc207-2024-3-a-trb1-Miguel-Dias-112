@@ -19,7 +19,8 @@ export class RotasAPI {
         const HUDireto = this.concatenaAnexo(anelViario,HuAnexo)
         const OdontoDireto = this.concatenaAnexo(anelViario,OdontoAnexo);
         const OdontoIch = this.concatenaAnexo(OdontoDireto,anexoIch);
-        let Circular = this.concatenaAnexo(HUDireto,OdontoIch); 
+        let Circular = this.concatenaAnexo(HUDireto,OdontoAnexo); 
+        Circular = this.concatenaAnexo(Circular,anexoIch);
         switch (nome) {
             case 'Circular':
                 return Circular;
@@ -34,7 +35,6 @@ export class RotasAPI {
             default:
                 return anelViario;
         }
-
     }
 }
 export default new RotasAPI()
