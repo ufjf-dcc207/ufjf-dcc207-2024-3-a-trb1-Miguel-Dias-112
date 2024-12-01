@@ -1,8 +1,27 @@
 import { anelViario, HuAnexo, OdontoAnexo, anexoIch,rotasNome } from './RotasMapaData';
-
-export class RotasAPI {
+import { fromLonLat } from 'ol/proj';
+class RotasAPI {
+    #coordenadaAtual = [-4827769.166891132, -2484616.878317465]
+    constructor(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const coordenadas = fromLonLat([longitude, latitude]);
+                    this.#coordenadaAtual = coordenadas;
+                },
+                (error) => {
+                    console.error('Erro ao obter localização:', error);
+                }
+            );
+        }
+    }
     get RotasNome(): string[] {
         return rotasNome;
+    }
+    get PosAtual(){
+        return this.#coordenadaAtual;
     }
     concatenaAnexo(rotaPrincipal: number[][], rotaAnexo:number[][]): number[][] {
         let posI: number;

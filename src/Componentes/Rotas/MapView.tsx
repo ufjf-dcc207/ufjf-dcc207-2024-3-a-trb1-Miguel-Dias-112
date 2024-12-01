@@ -9,7 +9,7 @@ import Feature from "ol/Feature";
 import XYZ from "ol/source/XYZ";
 import './MapView.css';
 import { useEffect, useRef } from "react";
-
+import rotasAPI from "../../APIS/Rotas/rotasAPI";
 export function MapView({ rota }: any) {
     const mapaRef = useRef<Map | null>(null);  // Armazena a referência do mapa
     const vectorLayerRef = useRef<VectorLayer<VectorSource<Feature<LineString>>> | null>(null);  // Armazena a referência da camada de vetor
@@ -35,16 +35,13 @@ export function MapView({ rota }: any) {
                 features: [routeFeature],
             }),
         });
-
         // Adiciona a camada de vetor no mapa
         map.addLayer(vectorLayer);
-
         // Armazena a camada de vetor para remoção futura
         vectorLayerRef.current = vectorLayer;
     }
 
     useEffect(() => {
-        // Inicializa o mapa apenas uma vez
         const mapa = new Map({
             target: "map",
             layers: [
@@ -55,14 +52,12 @@ export function MapView({ rota }: any) {
                 }),
             ],
             view: new View({
-                center: [-4827769.166891132, -2484616.878317465],
+                center: rotasAPI.PosAtual,
                 zoom: 16.4,
             }),
         });
-
         // Armazena a referência do mapa
         mapaRef.current = mapa;
-
         return () => {
             // Limpa o mapa ao desmontar o componente
             mapa.setTarget(undefined);
