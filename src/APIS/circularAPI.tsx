@@ -143,7 +143,11 @@ class CircularAPI {
     
     get horariosDate(): Horario {
         const date = new Date();
-        // Filtrar os horários que estão no intervalo atual
+        // Verificar se é final de semana 
+        if(date.getDay() === 0 || date.getDay() === 6){
+            return HorariosFora
+        }
+        
         const horarioAtual = Horarios.find((horario: Horario) => {
             const inicio = new Date(`${date.toDateString()} ${horario.inicio}`);
             const fim = new Date(`${date.toDateString()} ${horario.fim}`);
