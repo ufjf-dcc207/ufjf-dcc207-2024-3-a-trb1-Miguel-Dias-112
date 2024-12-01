@@ -82,6 +82,24 @@ const Horarios: Horario[] = [
         ],
         intervaloPontos: 5
       },
+    {
+        nome: "InterHorarioManha",
+        inicio: "06:00:00",
+        fim: "11:00:00",
+        rotas: [
+            Circular,
+        ],
+        intervaloPontos: 5
+    },
+    {
+        nome: "InterHorarioTarde",
+        inicio: "16:00:00",
+        fim: "19:00:00",
+        rotas: [
+            Circular,
+        ],
+        intervaloPontos: 5
+    }
      
 ]
 const HorariosFora: Horario= {
@@ -143,7 +161,11 @@ class CircularAPI {
     
     get horariosDate(): Horario {
         const date = new Date();
-        // Filtrar os horários que estão no intervalo atual
+        // Verificar se é final de semana 
+        if(date.getDay() === 0 || date.getDay() === 6){
+            return HorariosFora
+        }
+
         const horarioAtual = Horarios.find((horario: Horario) => {
             const inicio = new Date(`${date.toDateString()} ${horario.inicio}`);
             const fim = new Date(`${date.toDateString()} ${horario.fim}`);
