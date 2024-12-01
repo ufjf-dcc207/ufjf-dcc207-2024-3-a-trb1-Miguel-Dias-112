@@ -1,4 +1,3 @@
-import "./Models.tsx";
 export type Rotas = {
   nome: string;
   pontos: Ponto[];
