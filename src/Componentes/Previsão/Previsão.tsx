@@ -32,17 +32,17 @@ function Previsão() {
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
                     console.log(rota)
-                    return (
-                      rota.nome === 'Fora do horário' ? 
-                      (<img className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>) : (
-                      restanteInt >= 0 && 
-                      (<Horario 
-                          horaChegada={horaChegada} 
-                          horaPrevisão={restante} 
-                          nome={rota.nome} 
-                          blinkColor={restanteInt < 15 ? 'green' : restanteInt < 30 ? 'orange' : 'red'}
-                        />)
-                    ))
+                    if (rota.nome == 'Fora do horário'){
+                      return <img  className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
+                    }
+                    return restanteInt < 0 ? null : (
+                      <Horario 
+                      horaChegada={horaChegada} 
+                      horaPrevisão={restante} 
+                      nome={rota.nome} 
+                      blinkColor={restanteInt < 15 ? 'green' : restanteInt < 30 ? 'orange' : 'red'}
+                      />
+                    )
                 }
             )
             }
