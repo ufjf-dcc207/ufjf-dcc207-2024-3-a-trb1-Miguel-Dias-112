@@ -1,5 +1,5 @@
 import './Rotas.css'
-import type {Rotas} from '../../APIS/circularAPI.tsx'
+import type {Rotas} from '../../APIS/Previsões/PrevisõesData.tsx'
 import RotasApi from '../../APIS/Rotas/rotasAPI.tsx'
 import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
