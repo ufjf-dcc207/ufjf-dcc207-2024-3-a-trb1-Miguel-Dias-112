@@ -17,7 +17,6 @@ function App() {
           <Route  path="/CadeCircularUfjf/previsoes" element={<Previsão/>}/>
           <Route  path="/CadeCircularUfjf/rotas" element={<Rotas/>}/>
           <Route  path="/CadeCircularUfjf/" element={<Rotas/>}/>
-
         </Routes>
         <Footer></Footer>
     </div>

@@ -1,13 +1,14 @@
 import './Previsão.css'
-import circularAPI, { Rotas } from '../../APIS/circularAPI'
+import  { Rotas } from '../../APIS/Previsões/PrevisõesData'
+import PrevisõesApi from '../../APIS/Previsões/PrevisõesAPI'
 import {useRef, useState} from 'react'
-import { Ponto } from '../../APIS/circularAPI'
+import { Ponto } from '../../APIS/Previsões/PrevisõesData'
 import Horario from './Horario'
 import Header from '../Header/header'
 import semHoraIcon from '../../../public/semHoraIcon.svg'
 
 function Previsão() {
-  const horarios = circularAPI.horariosDate
+  const horarios = PrevisõesApi.horariosDate
   const [ponto, setPonto] = useState<Ponto>('Letras')
 
   const select = useRef<HTMLSelectElement>(null)
@@ -16,18 +17,18 @@ function Previsão() {
     const ponto = element.options[element.selectedIndex].value
     setPonto(ponto as Ponto)
   }
-  const pontos = circularAPI.Pontos
+  const pontos = PrevisõesApi.Pontos
 
   return (
       
       <div className='Previsão'>
-        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select}></Header>
+        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></Header>
         <main>    
           <div className='Previsões'>
             {
             horarios.rotas.map( 
                 (rota:Rotas) => {
-                    const horas = circularAPI.calcularHorarioRestante(rota, ponto, horarios)
+                    const horas = PrevisõesApi.calcularHorarioRestante(rota, ponto, horarios)
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
