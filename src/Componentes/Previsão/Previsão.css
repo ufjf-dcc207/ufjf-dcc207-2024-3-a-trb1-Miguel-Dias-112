@@ -136,11 +136,19 @@
 }
 
 .semHoraImg{
-    max-width: 300px;
-    width: 60%;
+    width: calc(100% - 50px);
+    padding-left: 25px;
+    padding-right: 25px;
+    max-height: 300px;
     aspect-ratio: 1/1;
     position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
+    top: 50%;
+    left: calc(50% + 0px);
+    transform: translate(-50% , -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
 
 }
