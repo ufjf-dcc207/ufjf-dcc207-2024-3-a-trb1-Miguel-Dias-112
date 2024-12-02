@@ -31,13 +31,14 @@
 .Previsões .container{
     width: 80%;
     height: auto;
-    background-color: gray;
+    background-color: #24242404;
     border-radius: 5px;
-    border: 0px solid rgba(0, 0, 0, 0.8);
+    border:5px solid rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
 }
 .Previsões .container h2{
     margin: 0%;
@@ -50,8 +51,6 @@
     justify-content: center;
     align-items: center;
     background-color: #242424;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     color: white;
 }
 .Previsões .container section{
@@ -63,7 +62,6 @@
     align-items: center;
     border: 0px;
     padding: 10px;
-    border: 5px solid rgba(0, 0, 0, 0.517);
     margin-top: 8px;
     border-radius: 5px;
     
@@ -81,7 +79,6 @@
     justify-content: center;
 
     background-color: #242424;
-    border-bottom:3px solid black ;
 
     color: white;
     align-items: center;
@@ -91,14 +88,14 @@
     padding-left: 9px;
     padding-right: 9px;
     border-bottom:3px solid black ;
-    background-color: #242424;
     color: white;
-    border-radius: 4px;
+    min-width: 30%;
     height: 100%;
     width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #242424;
 }
 .container .data{
     width: 100%;
