@@ -7,76 +7,21 @@
     height: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.Rotas header{
-    display: flex;
-    flex-direction: column;
-    border-bottom: 0px solid black;
-    width: 100%;
-}
-.Rotas header h1{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #242424;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-
-    padding: 10px;
-    margin: 0%;
-}
 .Rotas main{
     width: 100%;
     height: 100%;
-
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-
-}
-.Rotas section{
-    border: 5px solid black;
-    max-width: 500px;
-
-    color: white;
-    background-color: #242424;
-    margin-top: 10px;
-    padding: 20px;
-    display: flex;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    gap:20px;
-    width: 80%;
-    height: 10px;
-    flex-direction: row;
-}
-.Rotas section label{
-    font-size: medium;
-    font-weight: bold;
-    display: flex;
-    background-color: #242424;
-}
-
-.Rotas section select{
-    width: auto;
-    height: auto;
-    border-radius: 0px;
-    border: 0px solid black;
-    background: none;
-    border-bottom: 2px solid black;
-    color:white;
-    background-color: #242424;
 }
 .Rotas main .Pontos{
-    margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; 
     height: 100%;
-    border-top: 5px solid #242424;
 
 }
+

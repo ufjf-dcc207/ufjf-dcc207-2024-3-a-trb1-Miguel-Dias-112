@@ -3,6 +3,7 @@ import circularAPI, { Rotas } from '../../APIS/circularAPI'
 import {useRef, useState} from 'react'
 import { Ponto } from '../../APIS/circularAPI'
 import Horario from './Horario'
+import Header from '../Header/header'
 
 
 function Previsão() {
@@ -20,18 +21,8 @@ function Previsão() {
   return (
       
       <div className='Previsão'>
-        <header>
-          <h1>Previsão do Circular</h1>
-        </header>
-        <main>
-        <section className='sectionSelect'>
-            <label htmlFor="pontos">Ponto Atual:</label>
-              <select ref={select} onChange={onchangeHandler}>
-                {pontos.map( (ponto) => {
-                  return <option value={ponto}>{ponto}</option>
-                })}
-              </select>
-          </section>     
+        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select}></Header>
+        <main>    
           <div className='Previsões'>
             {
             horarios.rotas.map( 
