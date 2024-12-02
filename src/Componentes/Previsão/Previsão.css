@@ -6,25 +6,6 @@
     flex-direction: column;
     height: 100%;
 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-.Previsão header{
-    display: flex;
-    flex-direction: column;
-    border-bottom: 5px solid black;
-    width: 100%;
-}
-.Previsão header h1{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: #242424;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-
-    padding: 10px;
-    margin: 0%;
 }
 .Previsão main{
     max-width: 500px;
@@ -35,35 +16,7 @@
     flex-direction: column;
     align-items: center;
 }
-.Previsão .sectionSelect{
-    border: 5px solid black;
-    color: white;
-    background-color: #242424;
-    margin-top: 40px;
-    padding: 20px;
-    display: flex;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    gap:20px;
-    width: 80%;
-    flex-direction: row;
-}
-.Previsão section label{
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    background-color: #242424;
-}
-.Previsão section select{
-    width: auto;
-    height: 100%;
-    border-radius: 0px;
-    color: whitesmoke;
-    border: 0px solid black;
-    background: #242424;
-    border-bottom: 2px solid white;
-}
+
 .Previsões{
     height: auto;
     width: 100%;
@@ -78,13 +31,14 @@
 .Previsões .container{
     width: 80%;
     height: auto;
-    background-color: gray;
+    background-color: #24242404;
     border-radius: 5px;
-    border: 0px solid rgba(0, 0, 0, 0.8);
+    border:5px solid rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
 }
 .Previsões .container h2{
     margin: 0%;
@@ -97,8 +51,6 @@
     justify-content: center;
     align-items: center;
     background-color: #242424;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
     color: white;
 }
 .Previsões .container section{
@@ -110,7 +62,6 @@
     align-items: center;
     border: 0px;
     padding: 10px;
-    border: 5px solid rgba(0, 0, 0, 0.517);
     margin-top: 8px;
     border-radius: 5px;
     
@@ -128,7 +79,6 @@
     justify-content: center;
 
     background-color: #242424;
-    border-bottom:3px solid black ;
 
     color: white;
     align-items: center;
@@ -138,14 +88,14 @@
     padding-left: 9px;
     padding-right: 9px;
     border-bottom:3px solid black ;
-    background-color: #242424;
     color: white;
-    border-radius: 4px;
+    min-width: 30%;
     height: 100%;
     width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #242424;
 }
 .container .data{
     width: 100%;
@@ -180,4 +130,23 @@
     100% {
 
     }
+}
+
+.semHoraImg{
+    width: calc(100% - 50px);
+    height: 30%;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+    max-height: 300px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 40%;
+    left: calc(50% + 0px);
+    transform: translate(-50% , -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
