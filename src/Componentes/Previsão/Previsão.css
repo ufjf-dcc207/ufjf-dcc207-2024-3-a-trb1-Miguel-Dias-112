@@ -11,7 +11,7 @@
 .Previsão header{
     display: flex;
     flex-direction: column;
-    border-bottom: 5px solid black;
+    border-bottom: 0px solid black;
     width: 100%;
 }
 .Previsão header h1{
@@ -181,3 +181,4 @@
 
     }
 }
+

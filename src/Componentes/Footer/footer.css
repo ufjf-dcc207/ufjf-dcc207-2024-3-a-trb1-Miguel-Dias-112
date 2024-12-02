@@ -41,7 +41,7 @@ footer button:hover{
 @media screen and (min-width: 768px){
   footer{
     width: 70px;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 57px);
     display: flex ;
     flex-direction: column;
     justify-content: flex-start;
@@ -49,7 +49,9 @@ footer button:hover{
     margin-top: 60px;
     left: 0%;
     box-shadow: none;
-    background-color: #242424c0;
+    background-color: #3a3939;
+
+    border: 0;
 
   }
   footer button{
