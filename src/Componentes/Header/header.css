@@ -67,7 +67,6 @@ header{
 @media screen and (max-width: 768px){
   .sectionSelect {
     position: fixed;
-
     margin: 0%;
     padding: 0;
     z-index: 2;
@@ -78,6 +77,5 @@ header{
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-
   }
 }

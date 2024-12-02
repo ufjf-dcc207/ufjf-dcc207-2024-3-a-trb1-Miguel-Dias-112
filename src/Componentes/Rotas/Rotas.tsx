@@ -1,5 +1,5 @@
 import './Rotas.css'
-import type {Rotas} from '../../APIS/circularAPI.tsx'
+import type {Rotas} from '../../APIS/Previsões/PrevisõesData.tsx'
 import RotasApi from '../../APIS/Rotas/rotasAPI.tsx'
 import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
@@ -18,7 +18,7 @@ function Rotas() {
   }
   return (
       <div className='Rotas'>
-          <Header titulo='Rotas' onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome}></Header>
+          <Header titulo='Rotas' onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome} nomeInput='Selecione uma Rota'></Header>
         <main>
           <div className='Pontos'>
                 <MapView rota={rota}></MapView>

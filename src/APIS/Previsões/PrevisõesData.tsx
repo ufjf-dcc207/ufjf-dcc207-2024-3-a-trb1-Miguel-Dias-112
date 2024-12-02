@@ -130,3 +130,64 @@ export const HURUDireto: Rotas = {
     "Direito",
   ],
 };
+
+
+export const Horarios: Horario[] = [
+  { 
+      nome: "almoco", 
+      inicio: "11:00:00",
+      fim: "14:15:00",
+      rotas: [
+          OdontoDireto,
+          OdontoIchRU,
+          AnelViario,
+          HURUDireto,
+          Circular], 
+      intervaloPontos: 5 
+  },  
+  {
+      nome: "jantar",
+      inicio: "17:00:00",
+      fim: "20:15:00",
+      rotas: [
+          OdontoDireto,
+          OdontoIchRU,
+          AnelViario,
+          HURUDireto,
+          Circular
+      ],
+      intervaloPontos: 5
+    },
+  {
+      nome: "InterHorarioManha",
+      inicio: "06:00:00",
+      fim: "11:00:00",
+      rotas: [
+          Circular,
+      ],
+      intervaloPontos: 5
+  },
+  {
+      nome: "InterHorarioTarde",
+      inicio: "16:00:00",
+      fim: "19:00:00",
+      rotas: [
+          Circular,
+      ],
+      intervaloPontos: 5
+  }
+   
+]
+
+export const HorariosFora: Horario= {
+  nome: "fora do horário",
+  inicio: "21:00:00",
+  fim: "24:00:00",
+  rotas: [
+      {nome: "Fora do horário",
+      pontos: [],}
+      
+  ],
+  
+  intervaloPontos: 5
+}
