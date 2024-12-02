@@ -40,6 +40,7 @@ footer button:hover{
 
 @media screen and (min-width: 768px){
   footer{
+    position: absolute;
     width: 70px;
     height: calc(100vh - 57px);
     display: flex ;
