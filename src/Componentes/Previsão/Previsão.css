@@ -136,3 +136,12 @@
     }
 }
 
+.semHoraImg{
+    max-width: 300px;
+    width: 60%;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+
+}

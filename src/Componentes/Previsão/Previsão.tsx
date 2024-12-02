@@ -4,7 +4,7 @@ import {useRef, useState} from 'react'
 import { Ponto } from '../../APIS/circularAPI'
 import Horario from './Horario'
 import Header from '../Header/header'
-
+import semHoraIcon from '../../../public/semHoraIcon.svg'
 
 function Previsão() {
   const horarios = circularAPI.horariosDate
@@ -31,7 +31,10 @@ function Previsão() {
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-
+                    console.log(rota)
+                    if (rota.nome == 'Fora do horário'){
+                      return <img  className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
+                    }
                     return restanteInt < 0 ? null : (
                       <Horario 
                       horaChegada={horaChegada} 
