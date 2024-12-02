@@ -12,7 +12,7 @@ import XYZ from "ol/source/XYZ";
 import './MapView.css';
 import { useEffect, useRef } from "react";
 import rotasAPI from "../../APIS/Rotas/rotasAPI";
-import mapIcon from '../../../public/mapicon.png'
+import mapIcon from '../../../public/mapIcon.png'
 export function MapView({ rota }: any) {
     const mapaRef = useRef<Map | null>(null);  // Armazena a referência do mapa
     const vectorLayerRef = useRef<VectorLayer<VectorSource<Feature<LineString>>> | null>(null);  // Armazena a referência da camada de vetor

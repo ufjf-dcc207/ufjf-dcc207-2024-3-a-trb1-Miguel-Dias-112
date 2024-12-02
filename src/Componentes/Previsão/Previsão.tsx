@@ -3,7 +3,8 @@ import circularAPI, { Rotas } from '../../APIS/circularAPI'
 import {useRef, useState} from 'react'
 import { Ponto } from '../../APIS/circularAPI'
 import Horario from './Horario'
-
+import Header from '../Header/header'
+import semHoraIcon from '../../../public/semHoraIcon.svg'
 
 function Previsão() {
   const horarios = circularAPI.horariosDate
@@ -20,18 +21,8 @@ function Previsão() {
   return (
       
       <div className='Previsão'>
-        <header>
-          <h1>Previsão do Circular</h1>
-        </header>
-        <main>
-        <section className='sectionSelect'>
-            <label htmlFor="pontos">Ponto Atual:</label>
-              <select ref={select} onChange={onchangeHandler}>
-                {pontos.map( (ponto) => {
-                  return <option value={ponto}>{ponto}</option>
-                })}
-              </select>
-          </section>     
+        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select}></Header>
+        <main>    
           <div className='Previsões'>
             {
             horarios.rotas.map( 
@@ -40,7 +31,10 @@ function Previsão() {
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-
+                    console.log(rota)
+                    if (rota.nome == 'Fora do horário'){
+                      return <img  className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
+                    }
                     return restanteInt < 0 ? null : (
                       <Horario 
                       horaChegada={horaChegada} 

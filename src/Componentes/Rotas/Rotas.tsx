@@ -3,6 +3,7 @@ import type {Rotas} from '../../APIS/circularAPI.tsx'
 import RotasApi from '../../APIS/Rotas/rotasAPI.tsx'
 import { useState,useRef } from 'react'
 import { MapView } from './MapView.tsx'
+import Header from '../Header/header.tsx'
 function Rotas() {
 
   const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName(''))
@@ -17,18 +18,8 @@ function Rotas() {
   }
   return (
       <div className='Rotas'>
-        <header>
-          <h1>Rotas do Circular</h1>        
-        </header>
+          <Header titulo='Rotas' onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome}></Header>
         <main>
-        <section>
-            <label htmlFor="cars">Escolha uma rota:</label>
-              <select ref={selectIPT} onChange={onSelectHandler} name="cars">
-                {rotasNome.map( (nome) => {
-                  return <option value={nome}>{nome}</option>
-                })}
-              </select>
-          </section>     
           <div className='Pontos'>
                 <MapView rota={rota}></MapView>
           </div>
