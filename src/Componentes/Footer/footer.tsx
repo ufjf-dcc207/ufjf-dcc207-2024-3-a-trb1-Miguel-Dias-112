@@ -9,7 +9,9 @@ function Footer() {
     }
     return (
         <footer >
-            <button onClick={()=>{handleClick('/CadeCircularUfjf/rotas')}}>Rotas</button>
+            <button onClick={()=>{handleClick('/CadeCircularUfjf/rotas')}}>
+            <img  className = 'Footerimg'src={prevIcon}></img>
+            </button>
             <button onClick={()=>{handleClick('/CadeCircularUfjf/previsoes')}}>
                 <img  className = 'Footerimg'src={prevIcon}></img>
             </button>
