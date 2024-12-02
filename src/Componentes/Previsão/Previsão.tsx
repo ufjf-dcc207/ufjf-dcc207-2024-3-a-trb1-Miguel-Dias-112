@@ -22,7 +22,7 @@ function Previsão() {
   return (
       
       <div className='Previsão'>
-        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select}></Header>
+        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></Header>
         <main>    
           <div className='Previsões'>
             {

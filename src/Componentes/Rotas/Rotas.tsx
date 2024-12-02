@@ -18,7 +18,7 @@ function Rotas() {
   }
   return (
       <div className='Rotas'>
-          <Header titulo='Rotas' onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome}></Header>
+          <Header titulo='Rotas' onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome} nomeInput='Selecione uma Rota'></Header>
         <main>
           <div className='Pontos'>
                 <MapView rota={rota}></MapView>
