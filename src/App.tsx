@@ -1,12 +1,12 @@
 
 import './App.css'
 import Footer from './Componentes/Footer/footer'
-import Previsão from './Componentes/Previsão/Previsão'
+import Previsão from './Pages/Previsão/Previsão'
 import {
   Route,
   Routes,
 } from "react-router-dom";
-import Rotas from './Componentes/Rotas/Rotas';
+import Rotas from './Pages/Rotas/Rotas';
 import TermosDeUso from './Componentes/TermosDeUso/Termos';
 
 function App() {
