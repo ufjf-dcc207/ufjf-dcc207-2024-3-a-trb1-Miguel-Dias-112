@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// Chamando o analytics se formos usar o da Google
+// Chamando o analytics se formos usar o da Google no mapa
 const analytics = getAnalytics(app);
 
 const db = getFirestore(app);

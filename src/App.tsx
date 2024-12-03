@@ -1,6 +1,6 @@
 
 import './App.css'
-import Footer from './Componentes/Footer/footer'
+import Footer from './Componentes/Footer/Footer'
 import Previsão from './Componentes/Previsão/Previsão'
 import {
   Route,
