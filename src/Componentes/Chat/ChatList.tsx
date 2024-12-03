@@ -1,35 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { getMessagesRealTime } from "../APIS/firebaseAPI";
+import { getMessagesRealTime } from "../../APIS/firebaseAPI";
 
 interface Message {
-  id: string;
+  id: string; 
   user: string;
   message: string;
   timestamp: any; 
 }
 
 const ChatList: React.FC = () => {
-    const [messages, setMessages] = useState<Message[]>([]);
-  
-    useEffect(() => {
-      const unsubscribe = getMessagesRealTime((newMessages: React.SetStateAction<Message[]>) => {
-        setMessages(newMessages);
-      });
-  
+  const [messages, setMessages] = useState<Message[]>([]);
 
-      return () => unsubscribe();
-    }, []);
-  
+  useEffect(() => {
+    const unsubscribe = getMessagesRealTime((newMessages) => {
 
-    return (
-        <div>
-          {messages.map((msg) => (
-            <div key={msg.id}>
-              <strong>{msg.user}:</strong> {msg.message}
-            </div>
-          ))}
+      const updatedMessages = newMessages.map((msg: any) => ({
+        ...msg,
+        id: msg.id || "",
+      }));
+
+      setMessages(updatedMessages);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  return (
+    <div>
+      {messages.map((msg) => (
+        <div key={msg.id}>
+          <strong>{msg.user}:</strong> {msg.message}
         </div>
-      );
-    };
-  
-  export default ChatList;
+      ))}
+    </div>
+  );
+};
+
+export default ChatList;
