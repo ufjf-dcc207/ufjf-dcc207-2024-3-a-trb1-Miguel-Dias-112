@@ -2,8 +2,8 @@ import './Rotas.css'
 import type {Rotas} from '../../APIS/Previsões/PrevisõesData.tsx'
 import RotasApi from '../../APIS/Rotas/rotasAPI.tsx'
 import { useState,useRef } from 'react'
-import { MapView } from '../MapView/MapView.tsx'
-import Header from '../Header/header.tsx'
+import { MapView } from '../../Componentes/MapView/MapView.tsx'
+import Header from '../../Componentes/HeaderInputs/header.tsx'
 function Rotas() {
 
   const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName(''))
