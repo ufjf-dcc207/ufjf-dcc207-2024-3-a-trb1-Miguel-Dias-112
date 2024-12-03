@@ -14,3 +14,13 @@ export const sendMessage = async (user, message) => {
   }
 };
 
+export const getMessagesRealTime = (callback) => {
+  const q = query(collection(db, "chat"), orderBy("timestamp", "asc"));
+  return onSnapshot(q, (querySnapshot) => {
+    const messages = [];
+    querySnapshot.forEach((doc) => {
+      messages.push({ id: doc.id, ...doc.data() });
+    });
+    callback(messages);
+  });
+};
