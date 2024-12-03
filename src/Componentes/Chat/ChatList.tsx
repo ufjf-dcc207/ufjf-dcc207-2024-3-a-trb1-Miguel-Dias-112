@@ -21,6 +21,15 @@ const ChatList: React.FC = () => {
     }, []);
   
 
-  };
+    return (
+        <div>
+          {messages.map((msg) => (
+            <div key={msg.id}>
+              <strong>{msg.user}:</strong> {msg.message}
+            </div>
+          ))}
+        </div>
+      );
+    };
   
   export default ChatList;
