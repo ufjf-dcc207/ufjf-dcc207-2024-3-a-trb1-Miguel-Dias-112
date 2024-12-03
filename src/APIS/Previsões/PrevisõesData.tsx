@@ -143,7 +143,7 @@ export const Horarios: Horario[] = [
           AnelViario,
           HURUDireto,
           Circular], 
-      intervaloPontos: 5 
+      intervaloPontos: 15/13 
   },  
   {
       nome: "jantar",
@@ -156,7 +156,7 @@ export const Horarios: Horario[] = [
           HURUDireto,
           Circular
       ],
-      intervaloPontos: 5
+      intervaloPontos: 15/13
     },
   {
       nome: "InterHorarioManha",
@@ -165,7 +165,7 @@ export const Horarios: Horario[] = [
       rotas: [
           Circular,
       ],
-      intervaloPontos: 5
+      intervaloPontos: 30/13
   },
   {
       nome: "InterHorarioTarde",
@@ -174,7 +174,7 @@ export const Horarios: Horario[] = [
       rotas: [
           Circular,
       ],
-      intervaloPontos: 5
+      intervaloPontos: 30/13
   }
    
 ]

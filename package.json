@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cadecircularufjf": "file:",
     "gh-pages": "^6.2.0",
     "ol": "^10.2.1",
     "react": "^18.3.1",

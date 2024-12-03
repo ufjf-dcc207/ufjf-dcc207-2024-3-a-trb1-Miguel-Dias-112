@@ -3,8 +3,8 @@ import  { Rotas } from '../../APIS/Previsões/PrevisõesData'
 import PrevisõesApi from '../../APIS/Previsões/PrevisõesAPI'
 import {useRef, useState} from 'react'
 import { Ponto } from '../../APIS/Previsões/PrevisõesData'
-import Horario from './Horario'
-import Header from '../Header/header'
+import Horario from '../../Componentes/Horario/Horario'
+import Header from '../../Componentes/HeaderInputs/header'
 import semHoraIcon from '../../../public/semHoraIcon.svg'
 
 function Previsão() {

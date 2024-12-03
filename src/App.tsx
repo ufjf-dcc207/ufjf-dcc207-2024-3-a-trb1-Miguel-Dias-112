@@ -1,12 +1,13 @@
 
 import './App.css'
 import Footer from './Componentes/Footer/footer'
-import Previsão from './Componentes/Previsão/Previsão'
+import Previsão from './Pages/Previsão/Previsão'
 import {
   Route,
   Routes,
 } from "react-router-dom";
-import Rotas from './Componentes/Rotas/Rotas';
+import Rotas from './Pages/Rotas/Rotas';
+import TermosDeUso from './Componentes/TermosDeUso/Termos';
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
         <Routes>
           <Route  path="/CadeCircularUfjf/previsoes" element={<Previsão/>}/>
           <Route  path="/CadeCircularUfjf/rotas" element={<Rotas/>}/>
-          <Route  path="/CadeCircularUfjf/" element={<Rotas/>}/>
+          <Route  path="/CadeCircularUfjf/termosdeuso" element={<Rotas/>}/>
+          <Route  path="/CadeCircularUfjf/" element={<TermosDeUso/>}/>
         </Routes>
         <Footer></Footer>
     </div>
