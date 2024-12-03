@@ -12,7 +12,7 @@ const ChatList: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([]);
   
     useEffect(() => {
-      const unsubscribe = getMessagesRealTime((newMessages) => {
+      const unsubscribe = getMessagesRealTime((newMessages: React.SetStateAction<Message[]>) => {
         setMessages(newMessages);
       });
   
