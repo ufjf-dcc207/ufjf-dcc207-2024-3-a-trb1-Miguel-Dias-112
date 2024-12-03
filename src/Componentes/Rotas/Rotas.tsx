@@ -2,7 +2,7 @@ import './Rotas.css'
 import type {Rotas} from '../../APIS/Previsões/PrevisõesData.tsx'
 import RotasApi from '../../APIS/Rotas/rotasAPI.tsx'
 import { useState,useRef } from 'react'
-import { MapView } from './MapView.tsx'
+import { MapView } from '../MapView/MapView.tsx'
 import Header from '../Header/header.tsx'
 function Rotas() {
 
