@@ -7,7 +7,7 @@ interface DisclaimerHorarioProps {
 }
 function DisclaimerHorario({nomeAtual, intervalo}: DisclaimerHorarioProps) {
 
-  if (nomeAtual != 'Fora do horário') {
+  if (nomeAtual != 'fora do horário') {
     return (
       <div className='DisclaimerHorario'>
         <p>
