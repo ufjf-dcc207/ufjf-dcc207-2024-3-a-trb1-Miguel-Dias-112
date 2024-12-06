@@ -16,8 +16,9 @@ function Home() {
         <p>Na aba <strong>Rotas</strong>, você encontrará uma lista das rotas atuais, além de sua visualização em um mapa dinâmico e interativo.</p>
         <p>Este é um projeto de código aberto, sem fins lucrativos, baseado exclusivamente em informações públicas fornecidas pela UFJF, disponíveis no site oficial: <a href="https://www2.ufjf.br/transporte/veiculos/onibus-circular/" target="_blank">https://www2.ufjf.br/transporte/veiculos/onibus-circular/</a>.</p>
         <p>
-          Idealizado por: <a href='https://github.com/Miguel-Dias-112/'>Miguel Dias</a> e <a href='https://github.com/TheDevCaio'>Caio Machado</a>
-
+          Idealizado por 
+          <a href='https://github.com/Miguel-Dias-112/'>Miguel Dias</a> 
+          <a href='https://github.com/TheDevCaio'>Caio Machado</a>
         </p>
       </main>
 
