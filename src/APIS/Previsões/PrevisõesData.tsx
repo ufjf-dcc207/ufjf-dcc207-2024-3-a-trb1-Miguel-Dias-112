@@ -8,6 +8,7 @@ export type Horario = {
   intervaloPontos: number;
   inicio: string;
   fim: string;
+  intervaloTotal: number;
 };
 export type Ponto =
   | "Letras"
@@ -134,19 +135,20 @@ export const HURUDireto: Rotas = {
 
 export const Horarios: Horario[] = [
   { 
-      nome: "almoco", 
+      nome: "horario do almoço", 
       inicio: "11:00:00",
-      fim: "17:15:00",
+      fim: "14:15:00",
       rotas: [
           OdontoDireto,
           OdontoIchRU,
           AnelViario,
           HURUDireto,
           Circular], 
-      intervaloPontos: Math.round( 15/13) 
+      intervaloPontos: Math.round( 15/13),
+      intervaloTotal: 15 
   },  
   {
-      nome: "jantar",
+      nome: "horario da jantar",
       inicio: "17:00:00",
       fim: "20:15:00",
       rotas: [
@@ -156,25 +158,28 @@ export const Horarios: Horario[] = [
           HURUDireto,
           Circular
       ],
-      intervaloPontos: Math.round( 15/13)
+      intervaloPontos: Math.round( 15/13),
+      intervaloTotal: 15
     },
   {
-      nome: "InterHorarioManha",
+      nome: "horario da manhã",
       inicio: "06:00:00",
       fim: "11:00:00",
       rotas: [
           Circular,
       ],
-      intervaloPontos: Math.round( 30/13)
+      intervaloPontos: Math.round( 30/13),
+      intervaloTotal: 30
   },
   {
-      nome: "InterHorarioTarde",
+      nome: "horario da tarde",
       inicio: "16:00:00",
       fim: "19:00:00",
       rotas: [
           Circular,
       ],
-      intervaloPontos: Math.round( 30/13)
+      intervaloPontos: Math.round( 30/13),
+      intervaloTotal: 30
   }
    
 ]
@@ -189,5 +194,6 @@ export const HorariosFora: Horario= {
       
   ],
   
-  intervaloPontos: 5
+  intervaloPontos: 0,
+  intervaloTotal: 0
 }
