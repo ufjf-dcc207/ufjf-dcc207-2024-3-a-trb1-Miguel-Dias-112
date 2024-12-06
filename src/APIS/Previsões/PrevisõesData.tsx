@@ -136,7 +136,7 @@ export const Horarios: Horario[] = [
   { 
       nome: "almoco", 
       inicio: "11:00:00",
-      fim: "17:15:00",
+      fim: "14:15:00",
       rotas: [
           OdontoDireto,
           OdontoIchRU,
