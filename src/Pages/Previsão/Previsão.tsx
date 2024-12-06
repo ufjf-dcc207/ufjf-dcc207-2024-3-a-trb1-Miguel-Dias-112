@@ -9,9 +9,7 @@ import semHoraIcon from '../../../public/semHoraIcon.svg'
 import DisclaimerHorario from '../../Componentes/DisclaimerHorario/DisclaimerHorarios'
 
 function Previsão() {
-  const horarios = PrevisõesApi.horariosDate
   const [ponto, setPonto] = useState<Ponto>('Letras')
-
   const select = useRef<HTMLSelectElement>(null)
   function onchangeHandler(){
     const element = select.current!
@@ -19,6 +17,8 @@ function Previsão() {
     setPonto(ponto as Ponto)
   }
   const pontos = PrevisõesApi.Pontos
+  const horarios = PrevisõesApi.horariosDate
+  const sortedHorarios = PrevisõesApi.calcularHorariosRestantes(horarios.rotas, ponto, horarios);
 
   return (
       
@@ -28,26 +28,20 @@ function Previsão() {
           <div className='Previsões'>
             <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>
             {
-            horarios.rotas.map( 
-                (rota:Rotas) => {
-                    const horas = PrevisõesApi.calcularHorarioRestante(rota, ponto, horarios)
-                    const horaChegada = horas.tempo
-                    const restante = horas.restante
-                    const restanteInt = parseInt(restante.replace('m', ''))
-                    
-                    if (rota.nome == 'Fora do horário'){
-                      return <img  className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
-                    }
-                    return restanteInt < 0 ? null : (
-                      <Horario 
-                      horaChegada={horaChegada} 
-                      horaPrevisão={restante} 
-                      nome={rota.nome} 
-                      blinkColor={restanteInt < 15 ? 'green' : restanteInt < 30 ? 'orange' : 'red'}
-                      />
-                    )
-                }
-            )
+              sortedHorarios.map(({ rota, tempo, restante }) => {
+                  const restanteInt = parseInt(restante.replace('m', ''));
+                  if (rota.nome == 'Fora do horário'){
+                    return <img className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
+                  }
+                  return restanteInt < 0 ? null : (
+                    <Horario 
+                    horaChegada={tempo} 
+                    horaPrevisão={restante} 
+                    nome={rota.nome} 
+                    blinkColor={restanteInt < 15 ? 'green' : restanteInt < 30 ? 'orange' : 'red'}
+                    />
+                  )
+              })
             }
           </div>
          

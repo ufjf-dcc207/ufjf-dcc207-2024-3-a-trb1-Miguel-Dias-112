@@ -173,8 +173,8 @@ export const Horarios: Horario[] = [
   },
   {
       nome: "horario da tarde",
-      inicio: "16:00:00",
-      fim: "19:00:00",
+      inicio: "14:00:00",
+      fim: "16:00:00",
       rotas: [
           Circular,
       ],
