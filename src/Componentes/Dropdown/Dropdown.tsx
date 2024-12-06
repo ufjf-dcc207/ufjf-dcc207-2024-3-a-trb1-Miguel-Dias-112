@@ -9,7 +9,7 @@ function DropDown({ onchangeHandler,options,nomeInput}: DropdownProps) {
     return (
         <section className='DropDown'>
           <label htmlFor="pontos">{nomeInput}</label>
-            <select  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => onchangeHandler(e)}>
+            <select  onChange={(event: React.ChangeEvent<HTMLSelectElement>) => onchangeHandler(event)}>
               {
                 options.map( (option) => {
                     return <option value={option}>{option}</option>

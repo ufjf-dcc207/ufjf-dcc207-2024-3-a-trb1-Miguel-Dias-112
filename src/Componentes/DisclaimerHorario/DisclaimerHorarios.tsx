@@ -14,7 +14,6 @@ function DisclaimerHorario({nomeAtual, intervalo}: DisclaimerHorarioProps) {
           Os horarios são apenas uma previsão, podendo haver atrasos ou adiantamentos.
           Você está no <span>{nomeAtual}</span>, os onibus agora passam em média a cada  <span>{intervalo} minutos</span> .
         </p>
-        
       </div>
     );
   }
