@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 function TermosDeUso() {
 
     const navigate = useNavigate();
-
     function handleClick(url: string) {
         navigate(url);
       }
@@ -13,7 +12,7 @@ function TermosDeUso() {
         <div className="termos-container">
             <h1>Termos de Uso</h1>
             <p>
-                Bem-vindo à Cade Circular UFJF. Ao utilizar nossos serviços, você concorda com os seguintes termos e condições:
+                Bem-vindo à Circular UFJF. Ao utilizar nossos serviços, você concorda com os seguintes termos e condições:
             </p>
             <ul>
                 <li>
