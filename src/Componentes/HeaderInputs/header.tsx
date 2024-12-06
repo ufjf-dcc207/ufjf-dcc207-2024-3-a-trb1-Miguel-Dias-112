@@ -1,4 +1,5 @@
 import './header.css'
+import Dropdown from '../Dropdown/Dropdown'
 interface HeaderProps {
   titulo: string;
   onchangeHandler: ()=>void;
@@ -12,14 +13,7 @@ function Header({ titulo,onchangeHandler,select,options,nomeInput}: HeaderProps)
     return (
         <header>
           <h1>{titulo}</h1>      
-          <section className='sectionSelect'>
-            <label htmlFor="pontos">{nomeInput}</label>
-              <select ref={select} onChange={onchangeHandler}>
-                {options.map( (option) => {
-                  return <option value={option}>{option}</option>
-                })}
-              </select>
-          </section>     
+           
         </header>
     )
 }
