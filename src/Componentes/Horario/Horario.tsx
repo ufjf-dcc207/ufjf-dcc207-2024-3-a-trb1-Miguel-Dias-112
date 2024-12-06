@@ -19,7 +19,8 @@ function Horario( {horaChegada, horaPrevisão, nome, blinkColor}: HorarioProps){
                 <p>{horaPrevisão}</p>
             </section>
         </div>
-
+        
+      
         <div className='blink' style={{backgroundColor:blinkColor}}></div>
     </div>
     )

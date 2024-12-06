@@ -32,18 +32,15 @@ function Previsão() {
             <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>
             {
               sortedHorarios.map(({ rota, tempo, restante }) => {
-                  const restanteInt = parseInt(restante.replace('m', ''));
                   if (rota.nome == 'Fora do horário'){
                     return <img className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
-                  }
-                  return restanteInt < 0 ? null : (
-                    <Horario 
+                  }else{
+                    <HorariohoraPrevisão 
                     horaChegada={tempo} 
                     horaPrevisão={restante} 
                     nome={rota.nome} 
-                    blinkColor={restanteInt < 15 ? 'green' : restanteInt < 30 ? 'orange' : 'red'}
                     />
-                  )
+                  }
               })
             }
           </div>
