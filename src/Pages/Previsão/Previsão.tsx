@@ -32,7 +32,7 @@ function Previsão() {
                     const horaChegada = horas.tempo
                     const restante = horas.restante
                     const restanteInt = parseInt(restante.replace('m', ''))
-                    console.log(rota)
+                    
                     if (rota.nome == 'Fora do horário'){
                       return <img  className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
                     }
