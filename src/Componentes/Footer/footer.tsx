@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import './footer.css'
 import prevIcon from '../../../public/prevIcon.png'
 import rotasIcon from '../../../public/rotasIcon.png'
-import homeIcon from '../../../public/.png'
+import homeIcon from '../../../public/homeIcon.png'
 function Footer() {
     const navigate = useNavigate();
 
