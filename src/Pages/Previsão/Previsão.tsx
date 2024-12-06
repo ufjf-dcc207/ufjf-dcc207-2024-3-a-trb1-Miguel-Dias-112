@@ -26,7 +26,7 @@ function Previsão() {
         <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></Header>
         <main>    
           <div className='Previsões'>
-            <DisclaimerHorario nomeAtual={horarios.nome}/>
+            <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>
             {
             horarios.rotas.map( 
                 (rota:Rotas) => {
