@@ -1,0 +1,26 @@
+.Rotas{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center ;
+    flex-direction: column;
+    height: 100%;
+}
+.Rotas main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.Rotas main .Pontos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 100%;
+
+}
+

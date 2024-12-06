@@ -1,4 +1,4 @@
-const anexoIch = [
+ export const anexoIch = [
     [-4827423.815761, -2484590.680306],//inicio ich anexo
     [-4827425.010089, -2484587.694485],
     [-4827421.277813, -2484573.959706],
@@ -28,7 +28,7 @@ const anexoIch = [
     [-4827434.564718, -2484585.753701],//fim ich anexo
 
 ]
-const OdontoAnexo=[
+ export const OdontoAnexo=[
     [-4827640.984175, -2484575.772764],
     [-4827614.319561, -2484570.439841],
     [-4827594.442303, -2484574.803142],
@@ -84,7 +84,7 @@ const OdontoAnexo=[
     [-4827578.033437, -2484584.857954],
     [-4827612.818257, -2484523.797906],
 ]
-const HuAnexo=[
+ export const HuAnexo=[
     [-4827748.971713, -2485155.299136],
     [-4827725.484067 ,-2485179.418305],
     [-4827698.959204, -2485204.415898],
@@ -123,7 +123,7 @@ const HuAnexo=[
     [-4827659.919589, -2485254.503053],
     [-4827699.108496, -2485057.886712],
 ]
-const anelViario = [ 
+ export const anelViario = [ 
     [-4827922.447938, -2484341.214927],
     [-4827958.576377, -2484373.909671],
     [-4827963.652273, -2484424.817926],
@@ -188,47 +188,4 @@ const anelViario = [
     [-4827727.772381, -2484294.188239],
     [-4827922.447938, -2484341.214927],
 ]
-
-
-export class RotasAPI {
-    get RotasNome(): string[] {
-        return ['Anel Viario', 'Circular', 'Odonto Direto', 'Odonto-Ich-RU', 'HU-RU Direto'];
-    }
-    concatenaAnexo(rotaPrincipal: number[][], rotaAnexo:number[][]): number[][] {
-        let posI: number;
-        let posF: number;
-        posI = rotaPrincipal.map(e => e[0]).indexOf(rotaAnexo[0][0]);
-        posF = rotaPrincipal.map(e => e[0]).indexOf(rotaAnexo[rotaAnexo.length-1][0]);
-        const rotaCompleta = rotaPrincipal.slice(0,posI);
-        const Resto = rotaPrincipal.slice(posF+1);
-        rotaCompleta.push(...rotaAnexo)
-        rotaCompleta.push(...Resto)
-        
-        return rotaCompleta
-    }
-    getRotaByName(nome:string): number[][] {
-        
-        const HUDireto = this.concatenaAnexo(anelViario,HuAnexo)
-        const OdontoDireto = this.concatenaAnexo(anelViario,OdontoAnexo);
-        const OdontoIch = this.concatenaAnexo(OdontoDireto,anexoIch);
-        
-        let Circular = this.concatenaAnexo(HUDireto,OdontoIch); 
-
-        switch (nome) {
-            case 'Circular':
-                return Circular;
-            case 'HU-RU Direto':
-                return HUDireto
-            case 'Anel Viario':
-                return anelViario;
-            case 'Odonto Direto':
-                return OdontoDireto;
-            case 'Odonto-Ich-RU':
-                return OdontoIch;
-            default:
-                return anelViario;
-        }
-
-    }
-}
-export default new RotasAPI()
+export const rotasNome=['Anel Viario', 'Circular', 'Odonto Direto', 'Odonto-Ich-RU', 'HU-RU Direto']

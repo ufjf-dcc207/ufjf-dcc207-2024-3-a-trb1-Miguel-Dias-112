@@ -1,3 +1,4 @@
+import './Horarios.css'
 interface HorarioProps {
     horaChegada: string;
     horaPrevisão: string;

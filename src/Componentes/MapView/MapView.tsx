@@ -2,18 +2,42 @@ import Map from "ol/Map";
 import { View } from "ol";
 import TileLayer from "ol/layer/Tile";
 import VectorLayer from "ol/layer/Vector";
-import { Vector as VectorSource } from "ol/source";
-import { Style, Stroke } from "ol/style";
+import {  Vector as VectorSource } from "ol/source";
+import { Style, Stroke,Icon } from "ol/style";
 import LineString from "ol/geom/LineString";
+import Point from 'ol/geom/Point';
+import Vector from 'ol/layer/Vector';
 import Feature from "ol/Feature";
 import XYZ from "ol/source/XYZ";
 import './MapView.css';
 import { useEffect, useRef } from "react";
-
+import rotasAPI from "../../APIS/Rotas/rotasAPI";
+import mapIcon from '../../../public/mapIcon.png'
 export function MapView({ rota }: any) {
     const mapaRef = useRef<Map | null>(null);  // Armazena a referência do mapa
     const vectorLayerRef = useRef<VectorLayer<VectorSource<Feature<LineString>>> | null>(null);  // Armazena a referência da camada de vetor
-
+    function criaPontoRealTime(map: Map, ponto: number[]) {
+        var markers = new Vector({
+            source: new VectorSource(),
+            style: new Style({
+              image: new Icon({
+                anchor: [0.5, 1],
+                src: mapIcon
+              })
+            })
+          });
+          map.addLayer(markers);
+          var marker = new Feature(new Point(ponto));;
+          const source = markers.getSource();
+          if (source) {
+              source.addFeature(marker);
+          }
+          window.setTimeout(() => {
+            source!.clear();
+            criaPontoRealTime(map,rotasAPI.PosAtual);
+          }, 500);
+          return marker;
+    }
     // Função que cria a rota no mapa
     function criaRota(map: Map, rota: number[][]) {
         // Cria a geometria da rota
@@ -28,23 +52,19 @@ export function MapView({ rota }: any) {
             }),
         });
         routeFeature.setStyle(routeStyle);
-
         // Cria a camada de vetor para a rota
         const vectorLayer = new VectorLayer({
             source: new VectorSource({
                 features: [routeFeature],
             }),
         });
-
         // Adiciona a camada de vetor no mapa
         map.addLayer(vectorLayer);
-
         // Armazena a camada de vetor para remoção futura
         vectorLayerRef.current = vectorLayer;
     }
 
     useEffect(() => {
-        // Inicializa o mapa apenas uma vez
         const mapa = new Map({
             target: "map",
             layers: [
@@ -55,14 +75,12 @@ export function MapView({ rota }: any) {
                 }),
             ],
             view: new View({
-                center: [-4827769.166891132, -2484616.878317465],
+                center: rotasAPI.PosAtual,
                 zoom: 16.4,
             }),
         });
-
         // Armazena a referência do mapa
         mapaRef.current = mapa;
-
         return () => {
             // Limpa o mapa ao desmontar o componente
             mapa.setTarget(undefined);
@@ -78,7 +96,9 @@ export function MapView({ rota }: any) {
             }
             // Cria a nova rota no mapa
             criaRota(mapaRef.current, rota);
-            console.log(rota);
+            criaPontoRealTime(mapaRef.current!,rotasAPI.PosAtual)
+
+            
         }
         console.log(rota);
     }, [rota]);  // Dependência da propriedade `rota`
