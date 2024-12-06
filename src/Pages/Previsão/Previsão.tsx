@@ -1,5 +1,4 @@
 import './Previsão.css'
-import  { Rotas } from '../../APIS/Previsões/PrevisõesData'
 import PrevisõesApi from '../../APIS/Previsões/PrevisõesAPI'
 import {useRef, useState} from 'react'
 import { Ponto } from '../../APIS/Previsões/PrevisõesData'
@@ -7,6 +6,7 @@ import Horario from '../../Componentes/Horario/Horario'
 import Header from '../../Componentes/HeaderInputs/header'
 import semHoraIcon from '../../../public/semHoraIcon.svg'
 import DisclaimerHorario from '../../Componentes/DisclaimerHorario/DisclaimerHorarios'
+import DropDown from '../../Componentes/Dropdown/Dropdown'
 
 function Previsão() {
   const [ponto, setPonto] = useState<Ponto>('Letras')
@@ -23,7 +23,9 @@ function Previsão() {
   return (
       
       <div className='Previsão'>
-        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></Header>
+        <Header titulo='Previsão'>
+          <DropDown  onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></DropDown>
+        </Header>
         <main>    
           <div className='Previsões'>
             <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>

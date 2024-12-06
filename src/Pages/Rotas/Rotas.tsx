@@ -20,7 +20,7 @@ function Rotas() {
   return (
       <div className='Rotas'>
           <Header titulo='Rotas' >
-              <DropDown onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome} nomeInput='Selecione uma Rota'>></DropDown>
+              <DropDown onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome} nomeInput='Selecione uma Rota'></DropDown>
           </Header>
         <main>
           <div className='Pontos'>
