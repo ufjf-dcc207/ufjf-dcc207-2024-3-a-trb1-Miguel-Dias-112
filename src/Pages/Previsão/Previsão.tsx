@@ -1,20 +1,21 @@
 import './Previsão.css'
-import  { Rotas } from '../../APIS/Previsões/PrevisõesData'
 import PrevisõesApi from '../../APIS/Previsões/PrevisõesAPI'
-import {useRef, useState} from 'react'
+import { useState} from 'react'
 import { Ponto } from '../../APIS/Previsões/PrevisõesData'
 import Horario from '../../Componentes/Horario/Horario'
 import Header from '../../Componentes/HeaderInputs/header'
 import semHoraIcon from '../../../public/semHoraIcon.svg'
 import DisclaimerHorario from '../../Componentes/DisclaimerHorario/DisclaimerHorarios'
+import DropDown from '../../Componentes/Dropdown/Dropdown'
 
 function Previsão() {
   const [ponto, setPonto] = useState<Ponto>('Letras')
-  const select = useRef<HTMLSelectElement>(null)
-  function onchangeHandler(){
-    const element = select.current!
-    const ponto = element.options[element.selectedIndex].value
-    setPonto(ponto as Ponto)
+  function onchangeHandler(e: React.ChangeEvent<HTMLSelectElement>){
+    const target = e.target;
+    if (target) {
+      const ponto = target.options[target.selectedIndex].value;
+      setPonto(ponto as Ponto);
+    }
   }
   const pontos = PrevisõesApi.Pontos
   const horarios = PrevisõesApi.horariosDate
@@ -23,7 +24,9 @@ function Previsão() {
   return (
       
       <div className='Previsão'>
-        <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></Header>
+        <Header titulo='Previsão'>
+          <DropDown  onchangeHandler={onchangeHandler} options={pontos}  nomeInput='Ponto Atual'></DropDown>
+        </Header>
         <main>    
           <div className='Previsões'>
             <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>
