@@ -1,6 +1,6 @@
 import './Previsão.css'
 import PrevisõesApi from '../../APIS/Previsões/PrevisõesAPI'
-import {useRef, useState} from 'react'
+import { useState} from 'react'
 import { Ponto } from '../../APIS/Previsões/PrevisõesData'
 import Horario from '../../Componentes/Horario/Horario'
 import Header from '../../Componentes/HeaderInputs/header'
