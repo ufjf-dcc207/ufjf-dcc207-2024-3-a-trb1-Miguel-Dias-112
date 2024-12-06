@@ -4,6 +4,7 @@ import RotasApi from '../../APIS/Rotas/rotasAPI.tsx'
 import { useState,useRef } from 'react'
 import { MapView } from '../../Componentes/MapView/MapView.tsx'
 import Header from '../../Componentes/HeaderInputs/header.tsx'
+import DropDown from '../../Componentes/Dropdown/Dropdown.tsx'
 function Rotas() {
 
   const [rota, setRota] = useState<number[][]>(RotasApi.getRotaByName(''))
@@ -18,7 +19,9 @@ function Rotas() {
   }
   return (
       <div className='Rotas'>
-          <Header titulo='Rotas' onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome} nomeInput='Selecione uma Rota'></Header>
+          <Header titulo='Rotas' >
+              <DropDown onchangeHandler={onSelectHandler} select={selectIPT} options={rotasNome} nomeInput='Selecione uma Rota'>></DropDown>
+          </Header>
         <main>
           <div className='Pontos'>
                 <MapView rota={rota}></MapView>
