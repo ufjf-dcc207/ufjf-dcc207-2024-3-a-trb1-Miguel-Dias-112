@@ -135,7 +135,7 @@ export const HURUDireto: Rotas = {
 
 export const Horarios: Horario[] = [
   { 
-      nome: "almoco", 
+      nome: "Horario do almoço", 
       inicio: "11:00:00",
       fim: "14:15:00",
       rotas: [
@@ -148,7 +148,7 @@ export const Horarios: Horario[] = [
       intervaloTotal: 15 
   },  
   {
-      nome: "jantar",
+      nome: "Horario da jantar",
       inicio: "17:00:00",
       fim: "20:15:00",
       rotas: [
@@ -162,7 +162,7 @@ export const Horarios: Horario[] = [
       intervaloTotal: 15
     },
   {
-      nome: "InterHorarioManha",
+      nome: "Horario da Tarde",
       inicio: "06:00:00",
       fim: "11:00:00",
       rotas: [
@@ -172,7 +172,7 @@ export const Horarios: Horario[] = [
       intervaloTotal: 30
   },
   {
-      nome: "InterHorarioTarde",
+      nome: "Horario da Tarde",
       inicio: "16:00:00",
       fim: "19:00:00",
       rotas: [

@@ -12,10 +12,9 @@ function DisclaimerHorario({nomeAtual, intervalo}: DisclaimerHorarioProps) {
       <div className='DisclaimerHorario'>
         <p>
           Os horarios são apenas uma previsão, podendo haver atrasos ou adiantamentos.
+          Você está no <span>{nomeAtual}</span>, os onibus agora passam em média a cada  <span>{intervalo} minutos</span> .
         </p>
-        <p>
-         Você está no {nomeAtual}, os onibus agora passam a cada  {intervalo} minutos.
-        </p>
+        
       </div>
     );
   }
