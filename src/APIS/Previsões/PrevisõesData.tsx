@@ -136,14 +136,14 @@ export const Horarios: Horario[] = [
   { 
       nome: "almoco", 
       inicio: "11:00:00",
-      fim: "14:15:00",
+      fim: "17:15:00",
       rotas: [
           OdontoDireto,
           OdontoIchRU,
           AnelViario,
           HURUDireto,
           Circular], 
-      intervaloPontos: 15/13 
+      intervaloPontos: Math.round( 15/13) 
   },  
   {
       nome: "jantar",
@@ -156,7 +156,7 @@ export const Horarios: Horario[] = [
           HURUDireto,
           Circular
       ],
-      intervaloPontos: 15/13
+      intervaloPontos: Math.round( 15/13)
     },
   {
       nome: "InterHorarioManha",
@@ -165,7 +165,7 @@ export const Horarios: Horario[] = [
       rotas: [
           Circular,
       ],
-      intervaloPontos: 30/13
+      intervaloPontos: Math.round( 30/13)
   },
   {
       nome: "InterHorarioTarde",
@@ -174,7 +174,7 @@ export const Horarios: Horario[] = [
       rotas: [
           Circular,
       ],
-      intervaloPontos: 30/13
+      intervaloPontos: Math.round( 30/13)
   }
    
 ]
