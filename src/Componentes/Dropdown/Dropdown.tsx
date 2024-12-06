@@ -1,20 +1,20 @@
 import './Dropdown.css'
 interface DropdownProps {
-  onchangeHandler: ()=>void;
-  select: React.RefObject<HTMLSelectElement>;
+  onchangeHandler: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   options: string[];
   nomeInput: string;
 }
-function DropDown({ onchangeHandler,select,options,nomeInput}: DropdownProps) {
-
+function DropDown({ onchangeHandler,options,nomeInput}: DropdownProps) {
     
     return (
-        <section className='sectionSelect'>
+        <section className='DropDown'>
           <label htmlFor="pontos">{nomeInput}</label>
-            <select ref={select} onChange={onchangeHandler}>
-              {options.map( (option) => {
-                return <option value={option}>{option}</option>
-              })}
+            <select  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => onchangeHandler(e)}>
+              {
+                options.map( (option) => {
+                    return <option value={option}>{option}</option>
+                })
+              }
             </select>
         </section>     
     )

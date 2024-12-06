@@ -10,11 +10,12 @@ import DropDown from '../../Componentes/Dropdown/Dropdown'
 
 function Previsão() {
   const [ponto, setPonto] = useState<Ponto>('Letras')
-  const select = useRef<HTMLSelectElement>(null)
-  function onchangeHandler(){
-    const element = select.current!
-    const ponto = element.options[element.selectedIndex].value
-    setPonto(ponto as Ponto)
+  function onchangeHandler(e: React.ChangeEvent<HTMLSelectElement>){
+    const target = e.target;
+    if (target) {
+      const ponto = target.options[target.selectedIndex].value;
+      setPonto(ponto as Ponto);
+    }
   }
   const pontos = PrevisõesApi.Pontos
   const horarios = PrevisõesApi.horariosDate
@@ -24,7 +25,7 @@ function Previsão() {
       
       <div className='Previsão'>
         <Header titulo='Previsão'>
-          <DropDown  onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></DropDown>
+          <DropDown  onchangeHandler={onchangeHandler} options={pontos}  nomeInput='Ponto Atual'></DropDown>
         </Header>
         <main>    
           <div className='Previsões'>
