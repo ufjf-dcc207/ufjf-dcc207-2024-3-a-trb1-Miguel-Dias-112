@@ -12,7 +12,7 @@ class PrevisõesApi {
         return todosPontos
     }
     
-    calcularHorarioRestante = (rota: Rotas, ponto: Ponto, horariosDate: Horario) => {
+    calculaRestante = (rota: Rotas, ponto: Ponto, horariosDate: Horario) => {
 
         
         const index = rota.pontos.indexOf(ponto as Ponto);
@@ -45,6 +45,13 @@ class PrevisõesApi {
         };
     };
     
+    calcularHorariosRestantes = (rota: Rotas[], ponto: Ponto, horariosDate: Horario) => {
+        return rota.map(r => ({
+            rota: r,
+            ...this.calculaRestante(r, ponto, horariosDate)
+        })).sort((a, b) => parseInt(a.restante) - parseInt(b.restante));
+    };
+
     get horariosDate(): Horario {
         const date = new Date();
         // Verificar se é final de semana 
@@ -57,6 +64,7 @@ class PrevisõesApi {
             const fim = new Date(`${date.toDateString()} ${horario.fim}`);
             return date >= inicio && date <= fim;
         });
+        
         // Retorna o horário encontrado ou um horário padrão
         return horarioAtual ?? HorariosFora;
     }
