@@ -6,6 +6,7 @@ import { Ponto } from '../../APIS/Previsões/PrevisõesData'
 import Horario from '../../Componentes/Horario/Horario'
 import Header from '../../Componentes/HeaderInputs/header'
 import semHoraIcon from '../../../public/semHoraIcon.svg'
+import DisclaimerHorario from '../../Componentes/DisclaimerHorario/DisclaimerHorarios'
 
 function Previsão() {
   const horarios = PrevisõesApi.horariosDate
@@ -25,6 +26,7 @@ function Previsão() {
         <Header titulo='Previsão' onchangeHandler={onchangeHandler} options={pontos} select={select} nomeInput='Ponto Atual'></Header>
         <main>    
           <div className='Previsões'>
+            <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>
             {
             horarios.rotas.map( 
                 (rota:Rotas) => {
