@@ -2,7 +2,7 @@ import './Previsão.css'
 import PrevisõesApi from '../../APIS/Previsões/PrevisõesAPI'
 import { useState} from 'react'
 import { Ponto } from '../../APIS/Previsões/PrevisõesData'
-import Horario from '../../Componentes/Horario/Horario'
+import Horario from '../../Componentes/Horario/Horario.tsx'
 import Header from '../../Componentes/HeaderInputs/header'
 import semHoraIcon from '../../../public/semHoraIcon.svg'
 import DisclaimerHorario from '../../Componentes/DisclaimerHorario/DisclaimerHorarios'
@@ -35,7 +35,7 @@ function Previsão() {
                   if (rota.nome == 'Fora do horário'){
                     return <img className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>
                   }else{
-                    <HorariohoraPrevisão 
+                    return <Horario 
                     horaChegada={tempo} 
                     horaPrevisão={restante} 
                     nome={rota.nome} 
