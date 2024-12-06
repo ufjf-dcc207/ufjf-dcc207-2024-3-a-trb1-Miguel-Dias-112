@@ -44,7 +44,7 @@
   }
   
   @media screen and (max-width: 768px){
-    .sectionSelect {
+    .DropDown {
       position: fixed;
       margin: 0%;
       padding: 0;
