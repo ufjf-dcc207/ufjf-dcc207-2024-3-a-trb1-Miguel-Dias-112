@@ -43,16 +43,21 @@
     align-items: center;
     overflow-y: scroll;
 }
-.Home main p{
+.Home main li{
     max-width: 500px;
     min-height: 80px;
     font-size: 1rem;
     font-weight: 700;
     border-bottom: 2px solid rgba(0, 0, 0, 0.048);
     padding: 0px;
+
+    display: flex ;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
 
-.Home main p:last-child{
+.Home main .Creditos{
     background-color: #242424;
     width: 100%;
     color: white;
