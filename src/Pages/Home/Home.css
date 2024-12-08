@@ -7,70 +7,119 @@
     height: 100%;
 
 }
-.Home .Container{
-    background-color: #94979b46;
-    
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 5px;
-}
-.Home main h1{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-top: 20px;
-    padding-bottom: 10px;
-    background-color: #242424;
-    height: 60px;
-    border-radius: 5px;
-    color: white;
-}
-
 .Home main{
-    width: 80%;
+    width:100%;
+    
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
 }
-.Home main li{
-    max-width: 500px;
-    min-height: 80px;
-    font-size: 1rem;
-    font-weight: 700;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.048);
-    padding: 0px;
-
-    display: flex ;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-}
-
-.Home main .Creditos{
-    background-color: #242424;
-    width: 100%;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
+.Home  main .Container{
+    height:auto;
+    margin-top: 30px;
+    width: auto;
+    max-width: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 60px;
-
+    padding: 30px;
+    border-radius: 5px;
+}
+.Home  main .Container h1{
+    height: auto;
+    margin: 0%;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-bottom: 3px solid #242424;
+}
+.Home main .Container ol{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0%;
+    margin: 0%;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    gap: 20px;
 }
 
-.Home main a{
-    color:#255696;
+.Home main .Container ol .Tutorial{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 0%;
+    margin: 0%;
+    background-color: #242424;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: rgba(255, 255, 255, 0.801);
+    font-weight: 500;
+    text-align: left;
 }
+.Home main  a{
+    color: rgba(4, 113, 163, 0.993);
+    font-weight: 500;
+}
+.Home main .Container ol li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 0%;
+    margin: 0%;
+    background:none;
+    text-align: center;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: black;
+    font-weight: 700;
+    
+}
+.Home main .Container .Creditos{
+    width: 100%;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;    
+}
+.Home main .Container li img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+@media screen and (min-width: 768px){
+    .Home main .Container{
+        width: 80%;
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-left: 60px;
+        background-color: gainsboro;
+        
+    }
+    .Home main .Container .Creditos{
+        width: 70%;
+        padding: 20px;
+        border-radius: 5px;
+        margin: 0%;
+        
+    }
+    
+}
+
+
