@@ -109,8 +109,15 @@
         padding-left: 50px;
         padding-right: 50px;
         margin-left: 60px;
-        background-color: gainsboro;
+        background-color: rgba(220, 220, 220, 0.534);
         
+    }
+    .Home main .Container h1{
+        width: 80%;
+        padding-left: 50px;
+        padding-right: 50px;
+        display: flex;
+        justify-content: center;        
     }
     .Home main .Container .Creditos{
         width: 70%;

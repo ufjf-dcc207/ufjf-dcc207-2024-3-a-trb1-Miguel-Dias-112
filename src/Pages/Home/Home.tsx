@@ -19,7 +19,12 @@ function Home() {
                 Este projeto foi desenvolvido  para simplificar e interpretar informações sobre o Circular da UFJF,
                 promovendo mais praticidade e bem-estar para a comunidade acadêmica como um todo.
                 </p>
-                
+              </li>
+              <li className='Tutorial'>
+                <img src={rotasIcon} alt='Previsão Icon'/>
+                <p>
+                  Na aba <strong>Rotas</strong>, você encontrará uma lista das rotas atuais, além de sua visualização em um mapa dinâmico e interativo.
+                </p>
               </li>
               <li className='Tutorial'>
                 <img src={prevIcon} alt='Previsão Icon'/>
@@ -28,12 +33,7 @@ function Home() {
                   de acordo com o ponto de sua escolha.
                 </p>
               </li>
-              <li className='Tutorial'>
-                <img src={rotasIcon} alt='Previsão Icon'/>
-                <p>
-                  Na aba <strong>Rotas</strong>, você encontrará uma lista das rotas atuais, além de sua visualização em um mapa dinâmico e interativo.
-                </p>
-              </li>
+              
               <li className='Tutorial'>
                 <p>
                   Este é um projeto de código aberto,  sem fins lucrativos, desenvolvido por alunos sem vÍnculo oficial com a UFJF,
@@ -47,7 +47,7 @@ function Home() {
             </ol>
           <p className='Creditos'>
             Idealizado por 
-            <a href='https://github.com/Miguel-Dias-112/'>Miguel Dias</a> 
+            <a href='https://github.com/Miguel-Dias-112/'>Miguel Dias</a>
             <a href='https://github.com/TheDevCaio'>Caio Machado</a>
           </p>
         </div>
