@@ -19,6 +19,7 @@ function App() {
           <Route  path="/CadeCircularUfjf/previsoes" element={<Previsão/>}/>
           <Route  path="/CadeCircularUfjf/rotas" element={<Rotas/>}/>
           <Route  path="/CadeCircularUfjf/termosdeuso" element={<TermosDeUso/>}/>
+          <Route  path="/CadeCircularUfjf/chat" element={<TermosDeUso/>}/>
           <Route  path="/CadeCircularUfjf/" element={<Home/>}/>
         </Routes>
         <Footer></Footer>
