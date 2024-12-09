@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { sendMessage } from "../../APIS/firebaseAPI";
+import './ChatImp.css'
 
 interface ChatInputProps {
   user: string;
@@ -22,7 +23,8 @@ const ChatInput: React.FC<ChatInputProps> = ({ user }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
+      <input 
+        
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
