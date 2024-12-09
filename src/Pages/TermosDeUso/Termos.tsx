@@ -16,7 +16,7 @@ function TermosDeUso() {
                 
             <main>
         
-            <h1>Termos de Uso</h1>
+       
             <p>
                 Bem-vindo à Cade Circular UFJF. Ao utilizar nossos serviços, você concorda com os seguintes termos e condições:
             </p>
