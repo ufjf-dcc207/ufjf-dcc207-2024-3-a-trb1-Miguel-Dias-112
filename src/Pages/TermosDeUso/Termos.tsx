@@ -1,3 +1,4 @@
+import Header from '../../Componentes/HeaderInputs/header';
 import './Termos.css';
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +11,11 @@ function TermosDeUso() {
 
     return (
         <div className="termos-container">
-            <h1>Termos de Uso</h1>
+          <Header titulo='Termos de Uso'>{null}</Header>
+                
+            <main>
+        
+       
             <p>
                 Bem-vindo à Circular UFJF. Ao utilizar nossos serviços, você concorda com os seguintes termos e condições:
             </p>
@@ -35,7 +40,7 @@ function TermosDeUso() {
                 O uso contínuo do Cade Circular UFJF implica na aceitação integral desses termos. É sua responsabilidade revisá-los regularmente, pois eles podem ser atualizados periodicamente.
             </p>
             <button  onClick={()=>{handleClick('/CadeCircularUfjf/rotas')}} className="aceitar-button">Aceitar</button>
-
+            </main>
         </div>
     );
 }
