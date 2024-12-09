@@ -1,4 +1,4 @@
-form { 
+.ChatIpt { 
 background: blue !important;
 width: auto;
 height: auto;
@@ -6,7 +6,7 @@ display: flex;
 
 }
 
-input {
+.ChatIpt input {
 
 
 

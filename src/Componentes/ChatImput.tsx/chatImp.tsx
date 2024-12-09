@@ -22,7 +22,8 @@ const ChatInput: React.FC<ChatInputProps> = ({ user }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}
+    className="ChatIpt">
       <input 
         
         type="text"
