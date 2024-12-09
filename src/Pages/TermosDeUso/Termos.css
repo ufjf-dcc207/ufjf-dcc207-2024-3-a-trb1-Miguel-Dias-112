@@ -1,5 +1,5 @@
 .termos-container {
-    padding: 20px;
+
     margin: 0 auto;
     max-width: 800px;
     background-color: #f9f9f9;
@@ -7,19 +7,35 @@
     border-radius: 8px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     z-index: 10;
+    width: 100%;
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center ;
+    flex-direction: column;
+    height: 100%;
+
 }
 
+
+
+
 .termos-container h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    text-align: center;
-    color: #222;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 0.3em solid #242424;
+    max-width: 500px;
 }
 
 .termos-container p {
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .termos-container ul {
