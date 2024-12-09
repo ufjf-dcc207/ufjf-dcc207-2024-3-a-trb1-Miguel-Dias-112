@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getMessagesRealTime } from "../../APIS/firebaseAPI";
+import './chatLi.css'
 
 interface Message {
   id: string; 
@@ -26,7 +27,7 @@ const ChatList: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <div className="chatLi">
       {messages.map((msg) => (
         <div key={msg.id}>
           <strong>{msg.user}:</strong> {msg.message}

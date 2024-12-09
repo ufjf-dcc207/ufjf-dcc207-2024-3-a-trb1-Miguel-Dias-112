@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { sendMessage } from "../../APIS/firebaseAPI";
-import './ChatImp.css'
+import './chatImp.css'
 
 interface ChatInputProps {
   user: string;
