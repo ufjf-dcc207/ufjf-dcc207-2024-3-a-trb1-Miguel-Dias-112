@@ -14,10 +14,28 @@
     overflow-y: scroll;
     height: 100vh;
     width: 100vw;
-
+    margin-top: 30px;
     gap: 20px;
 
 
     background-color: rgb(255, 255, 255);
 }
 
+.Chat .Container{
+    width: 80%;
+    height: calc(100% - 90px);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+}
+
+@media screen and (min-width: 768px){
+    .Chat .Container{
+        margin-left: 60px;
+    }
+    
+    
+}
