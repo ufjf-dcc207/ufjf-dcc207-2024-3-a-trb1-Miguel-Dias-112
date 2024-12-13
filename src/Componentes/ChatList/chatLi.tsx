@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { getMessagesRealTime } from "../../APIS/firebaseAPI";
-import './chatLi.css'
+import { getMessagesRealTime } from "../../APIS/firebaseAPI"; 
+import './chatLi.css';
 
 interface Message {
-  id: string; 
-  user: string;
+  id: string;
   message: string;
-  timestamp: any; 
 }
 
 const ChatList: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
-    const unsubscribe = getMessagesRealTime((newMessages) => {
 
-      const updatedMessages = newMessages.map((msg: any) => ({
-        ...msg,
-        id: msg.id || "",
+    const unsubscribe = getMessagesRealTime((newMessages) => {
+      const formattedMessages = newMessages.map((msg: any) => ({
+        id: msg.id, 
+        message: msg.message, 
       }));
 
-      setMessages(updatedMessages);
+      setMessages(formattedMessages);
     });
-
     return () => unsubscribe();
   }, []);
 
   return (
     <div className="chatLi">
       {messages.map((msg) => (
-        <div key={msg.id}>
-          <strong>{msg.user}:</strong> {msg.message}
+        <div key={msg.id} className="message">
+          {msg.message}
         </div>
       ))}
     </div>
