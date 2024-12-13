@@ -12,10 +12,8 @@ function Chat() {
 
       <Header titulo='Chat'>{null}</Header>
       <main>
-        <div className='Container'>
-        <ChatList></ChatList>
-        <ChatInput user={''}></ChatInput>
-      </div>
+     <ChatInput user={''}></ChatInput>
+     <ChatList></ChatList>
       </main>
 
       
