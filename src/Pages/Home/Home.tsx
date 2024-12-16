@@ -34,7 +34,7 @@ function Home() {
                   de acordo com o ponto de sua escolha.
                 </p>
               </li>
-              <li className='Tutorial'>
+               <li className='Tutorial'>
                 <img src={chatIcon} alt='Previsão Icon'/>
                 <p>
                   Na aba <strong>Chat</strong>, você tem um chat em tempo real para tirar dúvidas e compartilhar informações com outros usuários.
