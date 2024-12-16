@@ -22,10 +22,13 @@
 
 .ChatIpt button {
     width: 50px;
-    border:none;
+    border: none;
     background: #242424;
-    color:white;
-    padding:10px
+    color: white;
+    padding: 10px;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    text-align: center;
 }
-
 
