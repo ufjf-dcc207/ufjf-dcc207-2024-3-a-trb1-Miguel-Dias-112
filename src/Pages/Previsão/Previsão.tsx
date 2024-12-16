@@ -31,11 +31,11 @@ function Previsão() {
           <div className='Previsões'>
             <DisclaimerHorario nomeAtual={horarios.nome} intervalo={horarios.intervaloTotal}/>
             {
-              sortedHorarios.map(({ rota, tempo, restante }) => {
+              sortedHorarios.map(({ rota, tempo, restante },index) => {
                 return (
                   rota.nome == 'Fora do horário' ? 
                   <img className='semHoraImg' src={semHoraIcon} alt='fora do horário'></img>:
-                  <Horario horaChegada={tempo} horaPrevisão={restante} nome={rota.nome} 
+                  <Horario horaChegada={tempo} key={`Horario${index}`} horaPrevisão={restante} nome={rota.nome} 
                   />
                 );
               })
