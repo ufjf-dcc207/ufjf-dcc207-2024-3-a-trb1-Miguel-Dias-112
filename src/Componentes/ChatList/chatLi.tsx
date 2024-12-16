@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getMessagesRealTime } from "../../APIS/firebaseAPI"; 
+
 import './chatLi.css';
+import { getMessagesRealTime } from "../../Functions/FirebaseF";
 
 interface Message {
   id: string;
