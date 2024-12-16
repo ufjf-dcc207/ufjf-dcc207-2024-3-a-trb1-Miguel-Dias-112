@@ -3,6 +3,7 @@ import Header from '../../Componentes/HeaderInputs/header'
 import './Home.css'
 import prevIcon from '../../../public/prevIcon.png'
 import rotasIcon from '../../../public/rotasIcon.png'
+import chatIcon from '../../../public/chatIcon.png'
 function Home() {
 
   return (
@@ -33,7 +34,12 @@ function Home() {
                   de acordo com o ponto de sua escolha.
                 </p>
               </li>
-              
+              <li className='Tutorial'>
+                <img src={chatIcon} alt='Previsão Icon'/>
+                <p>
+                  Na aba <strong>Chat</strong>, você tem um chat em tempo real para tirar dúvidas e compartilhar informações com outros usuários.
+                </p>
+              </li>
               <li className='Tutorial'>
                 <p>
                   Este é um projeto de código aberto,  sem fins lucrativos, desenvolvido por alunos sem vÍnculo oficial com a UFJF,
