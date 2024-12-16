@@ -13,16 +13,16 @@ function Footer() {
     }
     return (
         <footer >
-             <button onClick={()=>{handleClick('/CadeCircularUfjf/')}}>
+             <button onClick={()=>{handleClick('/ufjf-dcc207-2024-3-a-trb1-Miguel-Dias-112/')}}>
                 <img  className = 'Footerimg'src={homeIcon}></img>
             </button>
-            <button onClick={()=>{handleClick('/CadeCircularUfjf/rotas')}}>
+            <button onClick={()=>{handleClick('/ufjf-dcc207-2024-3-a-trb1-Miguel-Dias-112/rotas')}}>
             <img  className = 'Footerimg'src={rotasIcon}></img>
             </button>
-            <button onClick={()=>{handleClick('/CadeCircularUfjf/previsoes')}}>
+            <button onClick={()=>{handleClick('/ufjf-dcc207-2024-3-a-trb1-Miguel-Dias-112/previsoes')}}>
                 <img  className = 'Footerimg'src={prevIcon}></img>
             </button>
-            <button onClick={()=>{handleClick('/CadeCircularUfjf/chat')}}>
+            <button onClick={()=>{handleClick('/ufjf-dcc207-2024-3-a-trb1-Miguel-Dias-112/chat')}}>
                 <img  className = 'Footerimg'src={chatIcon}></img>
             </button>
 
